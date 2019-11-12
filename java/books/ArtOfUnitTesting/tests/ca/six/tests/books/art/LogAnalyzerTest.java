@@ -4,9 +4,9 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class SimpleParserTest {
-
+public class LogAnalyzerTest {
     @Test
-    public void parseAndSum() {
+    public void isValidLogFileName_invalidExtension_returnsFalse() {
+
     }
 }
