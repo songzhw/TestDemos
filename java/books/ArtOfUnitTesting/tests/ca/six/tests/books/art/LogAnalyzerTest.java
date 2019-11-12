@@ -9,6 +9,7 @@ public class LogAnalyzerTest {
     public void isValidLogFileName_invalidExtension_returnsFalse() {
         LogAnalyzer target = new LogAnalyzer();
         boolean isValid = target.isValidLogFileName("a.txt");
+
         assertFalse(isValid);
     }
 
@@ -16,6 +17,7 @@ public class LogAnalyzerTest {
     public void isValidLogFileName_validExtension_returnTrue() {
         LogAnalyzer target = new LogAnalyzer();
         boolean isValid = target.isValidLogFileName("b.slf");
+
         assertTrue(isValid);
     }
 }
