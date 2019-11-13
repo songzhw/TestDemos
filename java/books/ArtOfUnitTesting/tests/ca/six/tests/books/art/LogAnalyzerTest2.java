@@ -34,5 +34,10 @@ public class LogAnalyzerTest2 {
         assertEquals(result, isValid);
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void isValidLogFileName_emptyFileName_throwsException() {
+        LogAnalyzer target = new LogAnalyzer();
+        target.isValidLogFileName("");
+    }
 
 }

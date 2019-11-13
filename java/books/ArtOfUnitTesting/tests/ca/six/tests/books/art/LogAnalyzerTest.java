@@ -4,6 +4,8 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
+// LogAnalyzerTest2.java is a more efficient version
+@Deprecated
 public class LogAnalyzerTest {
     @Test
     public void isValidLogFileName_invalidExtension_returnsFalse() {
