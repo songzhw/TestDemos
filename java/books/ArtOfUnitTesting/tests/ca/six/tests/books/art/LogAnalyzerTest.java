@@ -3,8 +3,11 @@ package ca.six.tests.books.art;
 import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
+import org.junit.experimental.categories.Categories;
 import org.junit.experimental.categories.Category;
 import org.junit.rules.ExpectedException;
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
 
 import java.lang.reflect.Executable;
 
@@ -13,6 +16,8 @@ import static org.junit.Assert.*;
 /* LogAnalyzerTest2 is to test true/false as a return value.
    LogAnalyzerTest  is to test other scenarios without parameterized test
  */
+@RunWith(Categories.class)
+@Suite.SuiteClasses({LogAnalyzerTest.class})
 public class LogAnalyzerTest {
     @Rule public ExpectedException exceptionRule = ExpectedException.none();
 
