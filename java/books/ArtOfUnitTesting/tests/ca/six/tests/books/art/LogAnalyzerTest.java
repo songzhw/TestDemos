@@ -4,22 +4,13 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-// LogAnalyzerTest2.java is a more efficient version
-@Deprecated
+/* LogAnalyzerTest2 is to test true/false as a return value.
+   LogAnalyzerTest  is to test other scenarios without parameterized test
+ */
 public class LogAnalyzerTest {
-    @Test
-    public void isValidLogFileName_invalidExtension_returnsFalse() {
+    @Test(expected = IllegalArgumentException.class)
+    public void isValidLogFileName_emptyFileName_throwsException() {
         LogAnalyzer target = new LogAnalyzer();
-        boolean isValid = target.isValidLogFileName("a.txt");
-
-        assertFalse(isValid);
-    }
-
-    @Test
-    public void isValidLogFileName_validExtension_returnTrue() {
-        LogAnalyzer target = new LogAnalyzer();
-        boolean isValid = target.isValidLogFileName("b.slf");
-
-        assertTrue(isValid);
+        target.isValidLogFileName("");
     }
 }
