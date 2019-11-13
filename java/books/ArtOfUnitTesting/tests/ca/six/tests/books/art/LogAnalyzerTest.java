@@ -25,9 +25,19 @@ public class LogAnalyzerTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void isValidLogFileName_emptyFileName_throwsException() {
+    public void isValidLogFileName_emptyFileName_throwsException1() {
         LogAnalyzer target = makeAnalyzer();
         target.isValidLogFileName("");
+    }
+
+    @Test
+    public void isValidLogFileName_emptyFileName_throwsException3() {
+        try {
+            LogAnalyzer target = makeAnalyzer();
+            target.isValidLogFileName("");
+        } catch (Exception e) {
+            assertEquals(e.getMessage(), "fileName has to be provided. Now it's empty");
+        }
     }
 
     @Ignore
