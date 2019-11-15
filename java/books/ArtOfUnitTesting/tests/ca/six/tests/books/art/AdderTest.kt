@@ -11,6 +11,14 @@ class AdderTest {
         assertEquals(0, result)
     }
 
+    @Test
+    fun add_WhenCalled_changeSum() {
+        val obj = adder()
+        obj.add(10)
+        obj.add(3)
+        assertEquals(13, obj.sum())
+    }
+
     private fun adder(): Adder {
         return Adder()
     }
