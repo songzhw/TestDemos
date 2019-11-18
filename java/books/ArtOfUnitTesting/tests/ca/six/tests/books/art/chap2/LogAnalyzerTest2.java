@@ -1,4 +1,4 @@
-package ca.six.tests.books.art;
+package ca.six.tests.books.art.chap2;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -8,6 +8,7 @@ import org.junit.runners.Parameterized.Parameters;
 
 import java.util.Arrays;
 import java.util.Collection;
+
 
 import static org.junit.Assert.*;
 

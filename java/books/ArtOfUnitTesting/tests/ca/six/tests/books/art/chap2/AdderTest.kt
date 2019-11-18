@@ -1,5 +1,6 @@
-package ca.six.tests.books.art
+package ca.six.tests.books.art.chap2
 
+import ca.six.tests.books.art.Adder
 import org.junit.Assert.*
 import org.junit.Test
 

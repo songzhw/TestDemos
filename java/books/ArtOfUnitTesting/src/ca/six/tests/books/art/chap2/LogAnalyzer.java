@@ -1,4 +1,4 @@
-package ca.six.tests.books.art;
+package ca.six.tests.books.art.chap2;
 
 
 class LogAnalyzer {

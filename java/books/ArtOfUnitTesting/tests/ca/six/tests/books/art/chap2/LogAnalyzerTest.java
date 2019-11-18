@@ -1,4 +1,4 @@
-package ca.six.tests.books.art;
+package ca.six.tests.books.art.chap2;
 
 import org.junit.Ignore;
 import org.junit.Rule;
@@ -10,6 +10,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
 import java.lang.reflect.Executable;
+
 
 import static org.junit.Assert.*;
 
