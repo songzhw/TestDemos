@@ -14,3 +14,10 @@ class Adder {
         return ret
     }
 }
+
+fun main() {
+    val value = "hug"
+    val msg = """hello:"$value"""".trimIndent()
+    println(msg)
+    println(msg.length)
+}
