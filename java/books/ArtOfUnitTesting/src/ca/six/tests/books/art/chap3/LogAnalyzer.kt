@@ -1,8 +1,9 @@
 package ca.six.tests.books.art.chap3
 
 import java.io.File
+
 open class FilesManager {
-    fun isValid(fileName: String?): Boolean {
+    open fun isValid(fileName: String?): Boolean {
 
         require(!(fileName == null || fileName == "")) {
             "fileName has to be provided. Now it's empty"
@@ -12,6 +13,7 @@ open class FilesManager {
         return file.exists()
     }
 }
+
 class LogAnalyzer(val fileMgr: FilesManager) {
     fun isValidLogName(fileName: String): Boolean {
         val isExist = fileMgr.isValid(fileName)
