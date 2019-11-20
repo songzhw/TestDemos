@@ -13,9 +13,9 @@ class FilesManager {
     }
 }
 
-class LogAnalyzer {
+class LogAnalyzer(val fileMgr: FilesManager) {
     fun isValidLogName(fileName: String): Boolean {
-        val isExist = FilesManager().isValid(fileName)
+        val isExist = fileMgr.isValid(fileName)
         return isExist and fileName.endsWith(".slf")
     }
 }
