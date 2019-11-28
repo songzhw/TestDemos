@@ -15,10 +15,10 @@ class LogAnalyzerTest {
     }
 
     @Test
-    fun test() {
+    fun isValidLogName_webServiceThrows_sendEmail() {
         `when`(mockWeb.logError(anyString())).thenThrow(RuntimeException("hello"))
         val target = LogAnalyzer(mockWeb, mockEmail)
         target.isValidLogName(".ac")
-        verify(mockEmail).sendEmail("xxx")
+        verify(mockEmail).bing()
     }
 }

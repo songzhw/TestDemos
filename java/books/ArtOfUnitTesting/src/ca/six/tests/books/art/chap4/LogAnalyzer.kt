@@ -2,6 +2,7 @@ package ca.six.tests.books.art.chap4
 
 open class Email {
     fun sendEmail(msg: String) {}
+    fun bing(){}
 }
 
 open class WebService {
