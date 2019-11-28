@@ -1,24 +1,25 @@
 package ca.six.tests.books.art.chap4
 
+import org.junit.Before
 import org.junit.Test
-
-class FakeEmail : Email()
-
-class FakeWebService : WebService() {
-    override fun logError(error: String) {
-        if (!error.isEmpty()) {
-            throw Exception(error)
-        }
-    }
-}
+import org.mockito.ArgumentMatchers.any
+import org.mockito.Mockito.*
 
 class LogAnalyzerTest {
+    lateinit var mockWeb: WebService
+    lateinit var mockEmail: Email
+
+    @Before
+    fun initEach() {
+        mockWeb = mock(WebService::class.java)
+        mockEmail = mock(Email::class.java)
+    }
+
     @Test
     fun test() {
-        val stubWebService = FakeWebService()
-        val mockEmail = FakeEmail()
-        val target = LogAnalyzer(stubWebService, mockEmail)
+        `when`(mockWeb.logError(any(String::class.java))).thenThrow(Exception("hello"))
+        val target = LogAnalyzer(mockWeb, mockEmail)
         target.isValidLogName(".ac")
-
+        verify(mockEmail).sendEmail("xxx")
     }
 }
