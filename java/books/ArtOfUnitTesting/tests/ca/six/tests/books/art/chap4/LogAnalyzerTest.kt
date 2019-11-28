@@ -2,7 +2,6 @@ package ca.six.tests.books.art.chap4
 
 import org.junit.Before
 import org.junit.Test
-import org.mockito.ArgumentMatchers.any
 import org.mockito.Mockito.*
 
 class LogAnalyzerTest {
@@ -17,7 +16,7 @@ class LogAnalyzerTest {
 
     @Test
     fun test() {
-        `when`(mockWeb.logError(any(String::class.java))).thenThrow(Exception("hello"))
+        `when`(mockWeb.logError(anyString())).thenThrow(Exception("hello"))
         val target = LogAnalyzer(mockWeb, mockEmail)
         target.isValidLogName(".ac")
         verify(mockEmail).sendEmail("xxx")
