@@ -16,7 +16,7 @@ class LogAnalyzerTest {
 
     @Test
     fun test() {
-        `when`(mockWeb.logError(anyString())).thenThrow(Exception("hello"))
+        `when`(mockWeb.logError(anyString())).thenThrow(RuntimeException("hello"))
         val target = LogAnalyzer(mockWeb, mockEmail)
         target.isValidLogName(".ac")
         verify(mockEmail).sendEmail("xxx")

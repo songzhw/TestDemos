@@ -1,11 +1,11 @@
 package ca.six.tests.books.art.chap4
 
 open class Email {
-    fun sendEmail(msg: String) {    }
+    fun sendEmail(msg: String) {}
 }
 
 open class WebService {
-    open fun logError(error: String) {    }
+    open fun logError(error: String) {}
 }
 
 
