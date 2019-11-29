@@ -3,6 +3,7 @@ package ca.six.tests.books.art.chap4
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito.*
+import kotlin.test.assertEquals
 
 class LogAnalyzerTest {
     lateinit var mockWeb: WebService
@@ -15,10 +16,12 @@ class LogAnalyzerTest {
     }
 
     @Test
-    fun isValidLogName_webServiceThrows_sendEmail() {
+    fun isValidLogName_webServiceThrows_returnFalse() {
         `when`(mockWeb.logError(anyString())).thenThrow(RuntimeException("hello"))
         val target = LogAnalyzer(mockWeb, mockEmail)
         val value = target.isValidLogName(".ac")
-        verify(mockWeb).bang()
+        assertEquals(false, value)
     }
+
+
 }
