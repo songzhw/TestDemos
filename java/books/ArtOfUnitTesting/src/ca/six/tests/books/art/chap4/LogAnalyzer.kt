@@ -2,11 +2,12 @@ package ca.six.tests.books.art.chap4
 
 open class Email {
     fun sendEmail(msg: String) {}
-    fun bing(){}
+    fun bing() {}
 }
 
 open class WebService {
     open fun logError(error: String) {}
+    fun bang(){}
 }
 
 
@@ -18,6 +19,7 @@ class LogAnalyzer(val service: WebService, val email: Email) {
                 service.logError("filename too short: $fileName")
             } catch (e: Exception) {
                 email.sendEmail(e.message ?: "")
+                return false
             }
         }
         return fileName.endsWith(".log")
