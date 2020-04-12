@@ -49,9 +49,7 @@ class MainActivityLogicTest {
         onView(withId(R.id.btnMain))
             .perform(click())
 
-        scenario.onActivity { actv ->
-            verify(worker).workSync(1111)
-        }
+        verify(worker).workSync(1111)
     }
 
 }
