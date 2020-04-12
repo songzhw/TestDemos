@@ -10,11 +10,12 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(R.layout.activity_main), IListener {
     val observable = MyObservable(this)
+    lateinit var worker: Worker
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val worker = Worker()
+        worker = Worker()
 
         tvMain.text = "MainActivity"
         btnMain.text = "work"
