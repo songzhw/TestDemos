@@ -17,7 +17,7 @@ class MyAppTest {
     fun testResource() {
         val app = ApplicationProvider.getApplicationContext<Application>()
         val appName = app.getString(R.string.app_name)
-        Assert.assertEquals("AndroidX_Test", appName)
+        assertEquals("AndroidX_Test", appName)
     }
 
     @Test
@@ -26,6 +26,11 @@ class MyAppTest {
         assertEquals("2020", app.id)
     }
 
-
+    @Test
+    fun changeInApp_equals1998() {
+        val app = ApplicationProvider.getApplicationContext<MyApp>()
+        app.changeId()
+        assertEquals("1998", app.id)
+    }
 
 }
