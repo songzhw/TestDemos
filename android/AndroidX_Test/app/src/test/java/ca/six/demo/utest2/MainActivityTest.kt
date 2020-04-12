@@ -16,6 +16,8 @@ class MainActivityTest {
 
     @Test
     fun testTextViewValue() {
+        launch(MainActivity::class.java)
+
         onView(withId(R.id.tvMain))
             .check(matches(withText("MainActivity")))
     }
