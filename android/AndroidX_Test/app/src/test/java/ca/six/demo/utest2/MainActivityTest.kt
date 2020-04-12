@@ -1,5 +1,6 @@
 package ca.six.demo.utest2
 
+import androidx.lifecycle.Lifecycle
 import androidx.test.core.app.ActivityScenario.launch
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.typeText
@@ -8,6 +9,7 @@ import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import ca.six.demo.utest2.biz.main.MainActivity
+import org.junit.Assert.assertNotNull
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -35,5 +37,17 @@ class MainActivityTest {
 
         onView(withId(R.id.etMain))
             .check(matches(withText(name)))
+    }
+
+    @Test
+    fun destroyActivity_listenerShouldBeUngreisted() {
+        val scenario = launch(MainActivity::class.java)
+        // 初始时不为空
+        scenario.onActivity { actv -> assertNotNull(actv.observable.listener) }
+
+        scenario.moveToState(Lifecycle.State.DESTROYED)
+
+        scenario.onActivity { actv -> assertNotNull(actv.observable.listener) }
+
     }
 }
