@@ -50,7 +50,7 @@ class MainActivityLogicTest {
             .perform(click())
 
         scenario.onActivity { actv ->
-            verify(worker).workSync(23)
+            verify(worker).workSync(1111)
         }
     }
 
