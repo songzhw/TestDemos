@@ -50,7 +50,7 @@ class MainActivityLogicTest {
         onView(withId(R.id.btnMain))
             .perform(click())
 
-        verify(worker).workSync(111)
+        verify(worker).workSync(23)
     }
 
 }
