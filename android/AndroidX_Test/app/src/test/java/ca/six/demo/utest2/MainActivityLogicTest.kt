@@ -45,14 +45,12 @@ class MainActivityLogicTest {
     @Test
     fun clickButton_callWorker() {
         val worker = mock(Worker::class.java)
-        `when`(worker.workSync(23)).thenReturn("mock000")
         scenario.onActivity { actv -> actv.worker = worker }
 
         onView(withId(R.id.btnMain))
             .perform(click())
 
-        onView(withId(R.id.tvMain))
-            .check(matches(withText("work.23")))
+        verify(worker).workSync(111)
     }
 
 }
