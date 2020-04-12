@@ -13,8 +13,9 @@ import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.mockito.Mockito.mock
-import org.mockito.Mockito.verify
+import org.mockito.ArgumentMatchers
+import org.mockito.ArgumentMatchers.any
+import org.mockito.Mockito.*
 
 @RunWith(AndroidJUnit4::class)
 class MainActivityLogicTest {
@@ -44,12 +45,14 @@ class MainActivityLogicTest {
     @Test
     fun clickButton_callWorker() {
         val worker = mock(Worker::class.java)
+        `when`(worker.workSync(23)).thenReturn("mock000")
         scenario.onActivity { actv -> actv.worker = worker }
 
         onView(withId(R.id.btnMain))
             .perform(click())
 
-        verify(worker).workSync(1111)
+        onView(withId(R.id.tvMain))
+            .check(matches(withText("work.23")))
     }
 
 }

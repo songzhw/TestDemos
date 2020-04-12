@@ -1,7 +1,7 @@
 package ca.six.demo.utest2.core
 
 open class Worker {
-    fun workSync(id: Int): String {
+    open fun workSync(id: Int): String {
         return "work.$id"
     }
 

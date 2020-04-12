@@ -20,7 +20,9 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), IListener {
         tvMain.text = "MainActivity"
         btnMain.text = "work"
         btnMain.setOnClickListener {
+            println("szw 111")
             tvMain.text = worker.workSync(23)
+            println("szw 222")
         }
     }
 
