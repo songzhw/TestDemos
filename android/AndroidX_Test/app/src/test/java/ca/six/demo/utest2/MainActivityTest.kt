@@ -22,4 +22,18 @@ class MainActivityTest {
             .check(matches(withText("MainActivity")))
     }
 
+    @Test
+    fun recreateActivity_inputTestShouldRetainedAfterThat() {
+        val name = "songzhw"
+        val scenario = launch(MainActivity::class.java)
+
+        onView(withId(R.id.etMain))
+            .perform(typeText(name))
+
+        // destroy and recreate Activity
+        scenario.recreate()
+
+        onView(withId(R.id.etMain))
+            .check(matches(withText(name)))
+    }
 }
