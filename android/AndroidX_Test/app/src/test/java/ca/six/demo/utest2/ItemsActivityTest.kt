@@ -2,6 +2,12 @@ package ca.six.demo.utest2
 
 import androidx.lifecycle.MutableLiveData
 import androidx.test.core.app.ActivityScenario
+import androidx.test.espresso.Espresso
+import androidx.test.espresso.Espresso.*
+import androidx.test.espresso.assertion.ViewAssertions
+import androidx.test.espresso.assertion.ViewAssertions.*
+import androidx.test.espresso.matcher.ViewMatchers
+import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import ca.six.demo.utest2.biz.items.ItemsActivity
 import ca.six.demo.utest2.biz.items.ItemsViewModel
@@ -30,7 +36,12 @@ class ItemsActivityTest {
     @Test
     fun clickButton_tvShouldChange() {
         val vm = mock(ItemsViewModel::class.java)
-        val liveData = mock(MutableLiveData::class.java)
-         `when`(vm.nameLiveData).thenReturn(liveData)
+        //val liveData = mock(MutableLiveData::class.java) //fail to use, due to generics
+        val liveData = MutableLiveData<String>()
+        `when`(vm.nameLiveData).thenReturn(liveData)
+
+        onView(withId(R.id.tvItems))
+            .check(matches(withText("xxx")))
+
     }
 }
