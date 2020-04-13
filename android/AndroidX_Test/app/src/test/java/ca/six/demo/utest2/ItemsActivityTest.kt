@@ -29,6 +29,6 @@ class ItemsActivityTest {
     @Test
     fun clickButton_tvShouldChange() {
         val vm = mock(ItemsViewModel::class.java)
-        `when`(vm.fetchName()).thenReturn("2323")
+        // `when`(vm.nameLiveData).thenReturn()
     }
 }
