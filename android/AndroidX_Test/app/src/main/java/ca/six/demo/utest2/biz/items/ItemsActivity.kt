@@ -25,7 +25,7 @@ class ItemsActivity : AppCompatActivity(R.layout.activity_item_list) {
 
 }
 
-class ItemsViewModel(val saver: SavedStateHandle) : ViewModel() {
+open class ItemsViewModel(val saver: SavedStateHandle) : ViewModel() {
     private val key_name = "my_name"
     fun setName(name: String) = saver.set(key_name, name)
     fun getName() = saver.getLiveData<String>(key_name)
