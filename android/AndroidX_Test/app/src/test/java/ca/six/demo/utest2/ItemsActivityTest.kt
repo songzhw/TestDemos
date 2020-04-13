@@ -2,12 +2,10 @@ package ca.six.demo.utest2
 
 import androidx.lifecycle.MutableLiveData
 import androidx.test.core.app.ActivityScenario
-import androidx.test.espresso.Espresso
-import androidx.test.espresso.Espresso.*
-import androidx.test.espresso.assertion.ViewAssertions
-import androidx.test.espresso.assertion.ViewAssertions.*
-import androidx.test.espresso.matcher.ViewMatchers
-import androidx.test.espresso.matcher.ViewMatchers.*
+import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import ca.six.demo.utest2.biz.items.ItemsActivity
 import ca.six.demo.utest2.biz.items.ItemsViewModel
@@ -41,7 +39,11 @@ class ItemsActivityTest {
         `when`(vm.nameLiveData).thenReturn(liveData)
 
         onView(withId(R.id.tvItems))
-            .check(matches(withText("xxx")))
+            .check(matches(withText("ItemsActivity")))
 
+        liveData.postValue("D200")
+
+        onView(withId(R.id.tvItems))
+            .check(matches(withText("D200")))
     }
 }

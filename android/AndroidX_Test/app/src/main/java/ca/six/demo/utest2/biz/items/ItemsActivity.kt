@@ -19,8 +19,10 @@ class ItemsActivity : AppCompatActivity(R.layout.activity_item_list) {
 
         btnItems.setOnClickListener { vm.fetchName() }
 
-        vm.nameLiveData.observe(this,
-            Observer { value -> tvItems.text = value })
+        vm.nameLiveData.observe(this, Observer { value ->
+            println("szw here here")
+            tvItems.text = value
+        })
     }
 
 }
@@ -30,7 +32,7 @@ open class ItemsViewModel(val saver: SavedStateHandle) : ViewModel() {
     fun setName(name: String) = saver.set(key_name, name)
     fun getName() = saver.getLiveData<String>(key_name)
 
-    val nameLiveData = MutableLiveData<String>()
+    open val nameLiveData = MutableLiveData<String>()
 
     fun fetchName() {
         thread {
