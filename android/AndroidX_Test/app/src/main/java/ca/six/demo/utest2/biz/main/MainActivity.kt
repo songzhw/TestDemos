@@ -9,7 +9,7 @@ import ca.six.demo.utest2.core.Worker
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(R.layout.activity_main), IListener {
-    val observable = MyObservable(this)
+    var observable = MyObservable(this)
     lateinit var worker: Worker
 
     override fun onCreate(savedInstanceState: Bundle?) {
