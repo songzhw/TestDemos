@@ -37,6 +37,7 @@ class ItemsActivityTest {
         //val liveData = mock(MutableLiveData::class.java) //fail to use, due to generics
         val liveData = MutableLiveData<String>()
         `when`(vm.nameLiveData).thenReturn(liveData)
+        scenario.onActivity { actv -> actv.vm = vm }
 
         onView(withId(R.id.tvItems))
             .check(matches(withText("ItemsActivity")))
