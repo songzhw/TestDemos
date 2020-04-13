@@ -73,7 +73,8 @@ class MainActivityTest {
 
         scenario.moveToState(Lifecycle.State.DESTROYED)
 
-        verify(observer).removeListener()
+        // verify(observer).empty() // fail. 这是期望的
+        verify(observer).removeListener() //succ. 这也是期望的
     }
 
     // TODO activity result

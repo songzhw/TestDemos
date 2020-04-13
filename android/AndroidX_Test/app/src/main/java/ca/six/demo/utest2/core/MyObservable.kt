@@ -4,8 +4,9 @@ interface IListener {
     fun onObservableChange()
 }
 
-class MyObservable(var listener: IListener?) {
-    fun removeListener() {
+open class MyObservable(var listener: IListener?) {
+    open fun removeListener() {
         this.listener = null
     }
+    open fun empty(){}
 }
