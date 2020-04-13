@@ -15,6 +15,7 @@ class ItemsActivity : AppCompatActivity(R.layout.activity_item_list) {
         super.onCreate(savedInstanceState)
 
         vm = ViewModelProvider(this).get(ItemsViewModel::class.java)
+        println("szw created")
 
         btnItems.setOnClickListener { vm.fetchName() }
 

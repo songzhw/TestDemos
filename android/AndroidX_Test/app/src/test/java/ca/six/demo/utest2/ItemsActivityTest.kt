@@ -42,7 +42,7 @@ class ItemsActivityTest {
         onView(withId(R.id.tvItems))
             .check(matches(withText("ItemsActivity")))
 
-        liveData.postValue("D200")
+        liveData.setValue("D200")
 
         onView(withId(R.id.tvItems))
             .check(matches(withText("D200")))
