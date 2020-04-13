@@ -16,6 +16,8 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".biz.items.ItemsActivity" />
+
     </application>
 
 </manifest>

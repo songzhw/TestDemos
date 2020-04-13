@@ -58,11 +58,6 @@ class MainActivityTest {
             .check(matches(withText(name)))
     }
 
-    //TODO
-    @Test
-    fun recreateActivity_dataSaved() {
-        // onSaveInstanceState()
-    }
 
     @Test
     fun destroyActivity_listenerShouldBeUngreisted() {
@@ -80,4 +75,6 @@ class MainActivityTest {
     // TODO activity result
 
     // TODO 传参数, 到本Actv/下一个Actv
+
+    // TODO 测试onSaveInstanceState()
 }
