@@ -1,5 +1,6 @@
 package ca.six.demo.utest2
 
+import androidx.lifecycle.MutableLiveData
 import androidx.test.core.app.ActivityScenario
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import ca.six.demo.utest2.biz.items.ItemsActivity
@@ -29,6 +30,7 @@ class ItemsActivityTest {
     @Test
     fun clickButton_tvShouldChange() {
         val vm = mock(ItemsViewModel::class.java)
-        // `when`(vm.nameLiveData).thenReturn()
+        val liveData = mock(MutableLiveData::class.java)
+         `when`(vm.nameLiveData).thenReturn(liveData)
     }
 }
