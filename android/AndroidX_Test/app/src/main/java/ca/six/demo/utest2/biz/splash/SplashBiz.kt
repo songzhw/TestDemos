@@ -29,3 +29,20 @@ class SplashViewModel : ViewModel() {
         }
     }
 }
+
+
+/*
+class MyViewModel : ViewModel() {
+
+    fun launchDataLoad() {
+        viewModelScope.launch {
+            sortList()
+            // Modify UI
+        }
+    }
+
+    suspend fun sortList() = withContext(Dispatchers.Default) {
+        // Heavy work
+    }
+}
+ */

@@ -15,7 +15,7 @@ object HttpEngine {
     }
 
     private fun request(urlSuffix: String): String {
-        val url = "https://www.mocky.io/v2/$urlSuffix"
+        val url = "http://www.mocky.io/v2/$urlSuffix"
         val request = Request.Builder().url(url).build()
         val call = http.newCall(request)
         val response = call.execute()
