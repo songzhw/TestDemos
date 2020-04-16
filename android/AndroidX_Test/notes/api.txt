@@ -1,0 +1,28 @@
+1. splash http://www.mocky.io/v2/5e9891f73500006100c483db
+{  "img": "...." }
+
+
+2. login:  http://www.mocky.io/v2/5e988dde3500003900c483b7
+{
+  "succ": true,
+  "isVip": false,
+  "pays": [
+      "credit card ***7890",
+      "paypal",
+      "app pay",
+      "google pay"
+    ]
+}
+
+3. 商品列表: http://www.mocky.io/v2/5e9891063500007100c483d2
+{
+  "continue": false,
+  "items": [
+    {
+      "id": "20dba45676fec",
+      "name": "口罩",
+      "img": "https://media.wired.com/photos/5e4ecb7512f42200089a4f0d/4:3/w_2131,h_1598,c_limit/Biz-facemask-165563186.jpg"
+    },
+    ...
+
+4.
