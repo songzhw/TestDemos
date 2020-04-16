@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import ca.six.demo.utest2.R
 import ca.six.demo.utest2.core.http.HttpEngine
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class SplashActivity : AppCompatActivity(R.layout.activity_splash) {
@@ -22,7 +23,7 @@ class SplashActivity : AppCompatActivity(R.layout.activity_splash) {
 
 class SplashViewModel : ViewModel() {
     fun start() {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             val resp = HttpEngine.splash()
             println("szw resp = $resp")
         }
