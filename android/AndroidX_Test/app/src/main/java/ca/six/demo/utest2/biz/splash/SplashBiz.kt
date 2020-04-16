@@ -27,7 +27,7 @@ class SplashActivity : AppCompatActivity() {
             Observer { imgUrl -> Picasso.get().load(imgUrl).into(ivSplashBg); })
 
         vm.navigationEvent.observe(this,
-            Observer { })
+            Observer { nav<MainActivity>() })
     }
 }
 
