@@ -1,5 +1,6 @@
 package ca.six.demo.utest2.biz.splash
 
+import android.database.sqlite.SQLiteBindOrColumnIndexOutOfRangeException
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.*
@@ -36,10 +37,14 @@ class SplashViewModel : ViewModel() {
     val navigationEvent = MutableLiveData<Event<Unit>>()
 
     fun start() {
+        println("szw 11")
         viewModelScope.launch(Dispatchers.IO) {
+            println("szw 22")
             val resp = HttpEngine.splash()
             imageLive.postValue(resp)
+            println("szw 33")
             Thread.sleep(2000)
+            println("szw 44")
             navigationEvent.postValue(Event(Unit))
         }
     }
