@@ -1,4 +1,4 @@
-package ca.six.demo.utest2.biz.items
+package ca.six.demo.utest2.biz
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -7,7 +7,7 @@ import ca.six.demo.utest2.R
 import kotlinx.android.synthetic.main.activity_item_list.*
 import kotlin.concurrent.thread
 
-class ItemsActivity : AppCompatActivity(R.layout.activity_item_list) {
+class Temp2 : AppCompatActivity(R.layout.activity_item_list) {
     //val vm by viewModels<ItemsViewModel>()
     lateinit var vm: ItemsViewModel
 

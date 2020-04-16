@@ -7,8 +7,8 @@ import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import ca.six.demo.utest2.biz.items.ItemsActivity
-import ca.six.demo.utest2.biz.items.ItemsViewModel
+import ca.six.demo.utest2.biz.Temp2
+import ca.six.demo.utest2.biz.ItemsViewModel
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
@@ -17,13 +17,13 @@ import org.mockito.Mockito.`when`
 import org.mockito.Mockito.mock
 
 @RunWith(AndroidJUnit4::class)
-class ItemsActivityTest {
+class Temp2Test {
 
-    lateinit var scenario: ActivityScenario<ItemsActivity>
+    lateinit var scenario: ActivityScenario<Temp2>
 
     @Before
     fun setup() {
-        scenario = ActivityScenario.launch(ItemsActivity::class.java)
+        scenario = ActivityScenario.launch(Temp2::class.java)
     }
 
     @After
