@@ -20,12 +20,12 @@ open class HttpEngine {
     }
 
     fun request(urlSuffix: String): String {
-//        val url = "http://www.mocky.io/v2/$urlSuffix"
-//        val request = Request.Builder().url(url).build()
-//        val call = http.newCall(request)
-//        val response = call.execute()
-//        return response.body?.string() ?: ""
-        return "{'img':'abc'}"
+        val url = "http://www.mocky.io/v2/$urlSuffix"
+        val request = Request.Builder().url(url).build()
+        val call = http.newCall(request)
+        val response = call.execute()
+        return response.body?.string() ?: ""
+//        return "{'img':'abc'}"
     }
 }
 
