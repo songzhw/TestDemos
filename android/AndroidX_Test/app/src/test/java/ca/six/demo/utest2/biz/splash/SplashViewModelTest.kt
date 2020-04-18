@@ -21,6 +21,6 @@ class SplashViewModelTest {
         vm.start()
 
         val img = LiveDataTestUtil.getValue(vm.imageLive)
-        assertEquals("123", img)
+        assertEquals("https://twgreatdaily.com/images/elastic/5Pb/5Pbb4WwBJleJMoPMq0hU.jpg", img)
     }
 }
