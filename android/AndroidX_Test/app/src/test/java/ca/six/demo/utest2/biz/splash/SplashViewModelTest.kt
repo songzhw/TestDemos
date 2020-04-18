@@ -9,6 +9,7 @@ import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.TestCoroutineDispatcher
 import org.junit.Rule
 import org.junit.Test
+import org.mockito.Mockito.`when`
 import org.mockito.Mockito.mock
 
 @ExperimentalCoroutinesApi
@@ -19,12 +20,14 @@ class SplashViewModelTest {
 
     @Test
     fun testStart() = runBlocking {
+        val expected = "http://111.jpg"
         val http = mock(HttpEngine::class.java)
+        `when`(http.splash()).thenReturn(expected)
+
         val vm = SplashViewModel(testDispatcher)
         vm.start()
 
         val img = LiveDataTestUtil.getValue(vm.imageLive)
-        assertEquals("https://twgreatdaily.com/images/elastic/5Pb/5Pbb4WwBJleJMoPMq0hU.jpg",
-            img)
+        assertEquals(expected, img)
     }
 }
