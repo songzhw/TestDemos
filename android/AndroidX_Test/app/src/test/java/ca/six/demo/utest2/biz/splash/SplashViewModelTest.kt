@@ -1,6 +1,7 @@
 package ca.six.demo.utest2.biz.splash
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import ca.six.demo.utest2.core.http.HttpEngine
 import ca.six.demo.utest2.utils.LiveDataTestUtil
 import junit.framework.Assert.assertEquals
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -8,6 +9,7 @@ import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.TestCoroutineDispatcher
 import org.junit.Rule
 import org.junit.Test
+import org.mockito.Mockito.mock
 
 @ExperimentalCoroutinesApi
 class SplashViewModelTest {
@@ -17,10 +19,12 @@ class SplashViewModelTest {
 
     @Test
     fun testStart() = runBlocking {
+        val http = mock(HttpEngine::class.java)
         val vm = SplashViewModel(testDispatcher)
         vm.start()
 
         val img = LiveDataTestUtil.getValue(vm.imageLive)
-        assertEquals("https://twgreatdaily.com/images/elastic/5Pb/5Pbb4WwBJleJMoPMq0hU.jpg", img)
+        assertEquals("https://twgreatdaily.com/images/elastic/5Pb/5Pbb4WwBJleJMoPMq0hU.jpg",
+            img)
     }
 }
