@@ -4,7 +4,7 @@ import ca.six.demo.utest2.core.data.SplashData
 import okhttp3.OkHttpClient
 import okhttp3.Request
 
-object HttpEngine {
+open class HttpEngine {
     val http = OkHttpClient()
 
     fun splash(): String {

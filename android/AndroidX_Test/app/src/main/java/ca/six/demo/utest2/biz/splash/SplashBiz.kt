@@ -36,10 +36,11 @@ class SplashActivity : AppCompatActivity() {
 class SplashViewModel(val dispatcher: CoroutineDispatcher = Dispatchers.IO) : ViewModel() {
     val imageLive = MutableLiveData<String>()
     val navigationEvent = MutableLiveData<Event<Unit>>()
+    val http = HttpEngine()
 
     fun start() {
         viewModelScope.launch(dispatcher) {
-            val resp = HttpEngine.splash()
+            val resp = http.splash()
             imageLive.postValue(resp)
             Thread.sleep(2000)
             navigationEvent.postValue(Event(Unit))
