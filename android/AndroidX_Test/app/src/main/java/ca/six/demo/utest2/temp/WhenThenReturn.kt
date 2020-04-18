@@ -12,10 +12,12 @@ class WhenThenReturn {
 open class BeMocked1 {
     open fun foo(): Int {
         println("szw B foo()")
-        return 20
+        return bar()
     }
 
-    fun bar() {
-
+    fun bar(): Int {
+        println("szw B bar")
+        return 30
     }
 }
+
