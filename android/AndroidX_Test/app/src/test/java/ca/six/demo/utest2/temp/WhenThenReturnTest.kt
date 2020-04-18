@@ -8,10 +8,11 @@ import org.mockito.Mockito.mock
 class WhenThenReturnTest {
     @Test
     fun testWhenThenReturn1() {
-        var mocked = mock(BeMocked1::class.java)
+        val mocked = mock(BeMocked1::class.java)
         `when`(mocked.foo()).thenReturn(333)
 
         val obj = WhenThenReturn()
+        obj.obj = mocked
         obj.work()
 
         assertEquals(333, obj.id)
