@@ -9,20 +9,20 @@ import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.TestCoroutineDispatcher
 import org.junit.Rule
 import org.junit.Test
-import org.mockito.ArgumentMatchers
-import org.mockito.ArgumentMatchers.*
-import org.mockito.Mockito.*
+import org.mockito.Mockito.doReturn
+import org.mockito.Mockito.mock
 
 @ExperimentalCoroutinesApi
 class SplashViewModelTest {
-    @get:Rule var instantExecutorRule = InstantTaskExecutorRule()
+    @get:Rule
+    var instantExecutorRule = InstantTaskExecutorRule()
     private val testDispatcher = TestCoroutineDispatcher()
 
     @Test
     fun testStart() = runBlocking {
         val expected = "http://111.jpg"
         val mockHttp = mock(HttpEngine::class.java)
-        `when`(mockHttp.splash()).thenReturn(expected)
+        doReturn(expected).`when`(mockHttp).splash()
 
         val vm = SplashViewModel(testDispatcher)
         vm.http = mockHttp
