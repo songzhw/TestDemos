@@ -9,8 +9,9 @@ import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.TestCoroutineDispatcher
 import org.junit.Rule
 import org.junit.Test
-import org.mockito.Mockito.`when`
-import org.mockito.Mockito.mock
+import org.mockito.ArgumentMatchers
+import org.mockito.ArgumentMatchers.*
+import org.mockito.Mockito.*
 
 @ExperimentalCoroutinesApi
 class SplashViewModelTest {
@@ -21,7 +22,8 @@ class SplashViewModelTest {
     fun testStart() = runBlocking {
         val expected = "http://111.jpg"
         val mockHttp = mock(HttpEngine::class.java)
-        `when`(mockHttp.splash()).thenReturn(expected)
+        `when`(mockHttp.request(anyString())).thenReturn("")
+//        `when`(mockHttp.splash()).thenReturn(expected)
 
         val vm = SplashViewModel(testDispatcher)
         vm.http = mockHttp

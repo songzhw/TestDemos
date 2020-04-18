@@ -19,7 +19,7 @@ open class HttpEngine {
         return request("5e988dde3500003900c483b7")
     }
 
-    private fun request(urlSuffix: String): String {
+    fun request(urlSuffix: String): String {
         val url = "http://www.mocky.io/v2/$urlSuffix"
         val request = Request.Builder().url(url).build()
         val call = http.newCall(request)
