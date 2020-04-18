@@ -22,8 +22,7 @@ class SplashViewModelTest {
     fun testStart() = runBlocking {
         val expected = "http://111.jpg"
         val mockHttp = mock(HttpEngine::class.java)
-        `when`(mockHttp.request(anyString())).thenReturn("")
-//        `when`(mockHttp.splash()).thenReturn(expected)
+        `when`(mockHttp.splash()).thenReturn(expected)
 
         val vm = SplashViewModel(testDispatcher)
         vm.http = mockHttp
