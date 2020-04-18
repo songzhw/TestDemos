@@ -38,14 +38,10 @@ class SplashViewModel(val dispatcher: CoroutineDispatcher = Dispatchers.IO) : Vi
     val navigationEvent = MutableLiveData<Event<Unit>>()
 
     fun start() {
-        println("szw 11")
         viewModelScope.launch(dispatcher) {
-            println("szw 22")
             val resp = HttpEngine.splash()
             imageLive.postValue(resp)
-            println("szw 33")
             Thread.sleep(2000)
-            println("szw 44")
             navigationEvent.postValue(Event(Unit))
         }
     }
