@@ -11,6 +11,7 @@ import ca.six.demo.utest2.core.http.HttpEngine
 import ca.six.demo.utest2.utils.nav
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_splash.*
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -32,13 +33,13 @@ class SplashActivity : AppCompatActivity() {
     }
 }
 
-class SplashViewModel : ViewModel() {
+class SplashViewModel(val dispatcher: CoroutineDispatcher = Dispatchers.IO) : ViewModel() {
     val imageLive = MutableLiveData<String>()
     val navigationEvent = MutableLiveData<Event<Unit>>()
 
     fun start() {
         println("szw 11")
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch(dispatcher) {
             println("szw 22")
             val resp = HttpEngine.splash()
             imageLive.postValue(resp)
