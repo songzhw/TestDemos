@@ -9,6 +9,7 @@ object HttpEngine {
 
     fun splash(): String {
         val resp = request("5e9891f73500006100c483db")
+        println("szw value = $resp")
         val data = SplashData(resp)
         return data.image
     }

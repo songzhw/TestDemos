@@ -1,19 +1,16 @@
 package ca.six.demo.utest2.biz.splash
 
-import ca.six.demo.utest2.utils.CoroutineTestRule
 import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.test.runBlockingTest
-import org.junit.Rule
+import kotlinx.coroutines.test.TestCoroutineDispatcher
 import org.junit.Test
 
 
 class SplashViewModelTest {
-    @get:Rule
-    val rule = CoroutineTestRule()
+    private val testDispatcher = TestCoroutineDispatcher()
 
     @Test
-    fun testStart() = rule.testDispatcher.runBlockingTest {
-        val vm = SplashViewModel()
+    fun testStart() = runBlocking {
+        val vm = SplashViewModel(testDispatcher)
         vm.start()
     }
 }
