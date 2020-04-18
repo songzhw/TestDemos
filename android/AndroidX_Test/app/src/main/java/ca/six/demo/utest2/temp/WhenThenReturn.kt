@@ -10,6 +10,8 @@ class WhenThenReturn {
 }
 
 open class BeMocked1 {
+    var worker = Worker1()
+
     open fun foo(): Int {
         println("szw B foo()")
         return bar()
@@ -17,7 +19,13 @@ open class BeMocked1 {
 
     fun bar(): Int {
         println("szw B bar")
-        return 30
+        return worker.doIt()
+    }
+}
+
+class Worker1 {
+    fun doIt(): Int {
+        return 40
     }
 }
 
