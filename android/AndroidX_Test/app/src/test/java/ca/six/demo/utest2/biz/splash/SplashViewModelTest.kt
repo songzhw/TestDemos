@@ -16,8 +16,7 @@ import org.mockito.Mockito.mock
 
 @ExperimentalCoroutinesApi
 class SplashViewModelTest {
-    @get:Rule
-    var instantExecutorRule = InstantTaskExecutorRule()
+    @get:Rule var instantExecutorRule = InstantTaskExecutorRule()
     private val testDispatcher = TestCoroutineDispatcher()
 
     @Test
