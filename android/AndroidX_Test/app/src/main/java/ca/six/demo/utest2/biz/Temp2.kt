@@ -15,12 +15,10 @@ class Temp2 : AppCompatActivity(R.layout.activity_item_list) {
         super.onCreate(savedInstanceState)
 
         vm = ViewModelProvider(this).get(ItemsViewModel::class.java)
-        println("szw created")
 
         btnItems.setOnClickListener { vm.fetchName() }
 
         vm.nameLiveData.observe(this, Observer { value ->
-            println("szw here here")
             tvItems.text = value
         })
     }

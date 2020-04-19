@@ -8,9 +8,7 @@ open class HttpEngine {
     val http = OkHttpClient()
 
     open fun splash(): String {
-        println("SZW ME = $this")
         val resp = request("5e9891f73500006100c483db")
-        println("szw value = $resp")
         val data = SplashData(resp)
         return data.image
     }

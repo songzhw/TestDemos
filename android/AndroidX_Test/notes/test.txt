@@ -1,0 +1,17 @@
+1. Splash页
+HttpEngine没有考虑线程
+所以需要SplashViewModel来考虑线程:
+viewModelScope.launch(Dispatcher.IO){
+    resp = httpEngine.splash()
+}
+
+[对策]
+这时的测试, 就得将上面的Dispatcher.IO改为注入的,
+这样我们才能注入TestCoroutineDispatcher
+
+[后注]
+后来发现不注入这样我们才能注入TestCoroutineDispatcher也没事
+只要有InstantTaskExecutorRule就行了, 它会把其它线程的事变为main线程上的来运行
+(上面的注入做法, 就做为一种思路吧)
+
+2.
