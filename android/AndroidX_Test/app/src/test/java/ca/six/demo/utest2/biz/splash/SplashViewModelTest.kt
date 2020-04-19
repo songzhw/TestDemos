@@ -8,6 +8,7 @@ import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.TestCoroutineDispatcher
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNotNull
 import org.junit.Rule
 import org.junit.Test
 import org.mockito.Mockito.`when`
@@ -17,7 +18,7 @@ import org.mockito.Mockito.mock
 class SplashViewModelTest {
     @get:Rule
     var instantExecutorRule = InstantTaskExecutorRule()
-//    private val testDispatcher = TestCoroutineDispatcher()
+    private val testDispatcher = TestCoroutineDispatcher()
 
     @Test
     fun startSplash_shouldGetImageFromHttp() {
@@ -36,17 +37,15 @@ class SplashViewModelTest {
     }
 
     @Test
-    fun startSplash_shouldNavToNextPage() = runBlockingTest {
+    fun startSplash_shouldNavToNextPage() {
         val mockHttp = mock(HttpEngine::class.java)
         `when`(mockHttp.splash()).thenReturn("")
 
-        val vm = SplashViewModel()
-        val event1 = LiveDataTestUtil.getValue(vm.navigationEvent)
-        println("event1 = $event1")
+        val vm = SplashViewModel(testDispatcher)
         vm.http = mockHttp
         vm.start()
 
         val event = LiveDataTestUtil.getValue(vm.navigationEvent)
-        println("event2 = $event")
+        assertNotNull(event)
     }
 }
