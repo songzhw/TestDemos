@@ -1,8 +1,12 @@
 1. splash http://www.mocky.io/v2/5e9891f73500006100c483db
 {  "img": "...." }
 
+2. home http://www.mocky.io/v2/5e9c819230000056000a7ea2
+{
+    "motto": "..."
+}
 
-2. login:  http://www.mocky.io/v2/5e988dde3500003900c483b7
+3. login:  http://www.mocky.io/v2/5e988dde3500003900c483b7
 {
   "succ": true,
   "isVip": false,
@@ -14,7 +18,7 @@
     ]
 }
 
-3. 商品列表: http://www.mocky.io/v2/5e9891063500007100c483d2
+4. 商品列表: http://www.mocky.io/v2/5e9891063500007100c483d2
 {
   "continue": false,
   "items": [

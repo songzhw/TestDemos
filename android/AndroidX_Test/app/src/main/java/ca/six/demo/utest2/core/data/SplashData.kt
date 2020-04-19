@@ -9,3 +9,11 @@ class SplashData(val src: String) {
             return json.optString("img")
         }
 }
+
+class HomeData(val src: String) {
+    val motto: String
+        get() {
+            val json = JSONObject(src)
+            return json.optString("motto")
+        }
+}

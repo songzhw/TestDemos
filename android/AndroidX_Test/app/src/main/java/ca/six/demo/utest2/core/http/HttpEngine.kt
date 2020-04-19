@@ -1,5 +1,6 @@
 package ca.six.demo.utest2.core.http
 
+import ca.six.demo.utest2.core.data.HomeData
 import ca.six.demo.utest2.core.data.SplashData
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -11,6 +12,12 @@ open class HttpEngine {
         val resp = request("5e9891f73500006100c483db")
         val data = SplashData(resp)
         return data.image
+    }
+
+    open fun home(): String {
+        val resp = request("5e9c819230000056000a7ea2")
+        val data = HomeData(resp)
+        return data.motto
     }
 
     open fun login(): String {
