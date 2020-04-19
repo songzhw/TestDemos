@@ -1,4 +1,4 @@
-1. Splash页
+1. Splash页 -- startSplash_shouldGetImageFromHttp()
 HttpEngine没有考虑线程
 所以需要SplashViewModel来考虑线程:
 viewModelScope.launch(Dispatcher.IO){
@@ -14,4 +14,8 @@ viewModelScope.launch(Dispatcher.IO){
 只要有InstantTaskExecutorRule就行了, 它会把其它线程的事变为main线程上的来运行
 (上面的注入做法, 就做为一种思路吧)
 
-2.
+2. Splash页 -- startSplash_shouldNavToNextPage()
+这里就一定要注入TestCoroutineDispatcher
+光有InstantTaskExecutorRule是不够的
+原因嘛, 看这两个类的源码就知道了
+
