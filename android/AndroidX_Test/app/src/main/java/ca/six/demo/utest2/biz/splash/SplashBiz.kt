@@ -42,8 +42,11 @@ class SplashViewModel(val dispatcher: CoroutineDispatcher = Dispatchers.IO) : Vi
         viewModelScope.launch(dispatcher) {
             val resp = http.splash()
             imageLive.postValue(resp)
+            println("001")
             Thread.sleep(2000)
+            println("002")
             navigationEvent.postValue(Event(Unit))
+            println("003")
         }
     }
 }
