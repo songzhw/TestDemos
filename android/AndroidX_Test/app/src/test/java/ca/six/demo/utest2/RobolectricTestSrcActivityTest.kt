@@ -9,7 +9,7 @@ import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import ca.six.demo.utest2.biz.main.MainActivity
+import ca.six.demo.utest2.temp.RobolectricTestSrcActivity
 import ca.six.demo.utest2.core.MyObservable
 import org.junit.After
 import org.junit.Before
@@ -19,12 +19,12 @@ import org.mockito.Mockito.mock
 import org.mockito.Mockito.verify
 
 @RunWith(AndroidJUnit4::class)
-class MainActivityTest {
-    lateinit var scenario: ActivityScenario<MainActivity>
+class RobolectricTestSrcActivityTest {
+    lateinit var scenario: ActivityScenario<RobolectricTestSrcActivity>
 
     @Before
     fun setup() {
-        scenario = launch(MainActivity::class.java)
+        scenario = launch(RobolectricTestSrcActivity::class.java)
     }
 
     @After
@@ -37,7 +37,7 @@ class MainActivityTest {
 
     @Test
     fun testTextViewValue() {
-        launch(MainActivity::class.java)
+        launch(RobolectricTestSrcActivity::class.java)
 
         onView(withId(R.id.tvMain))
             .check(matches(withText("MainActivity")))
@@ -62,7 +62,7 @@ class MainActivityTest {
     @Test
     fun destroyActivity_listenerShouldBeUngreisted() {
         val observer = mock(MyObservable::class.java)
-        val scenario = launch(MainActivity::class.java)
+        val scenario = launch(RobolectricTestSrcActivity::class.java)
         // 初始时不为空
         scenario.onActivity { actv -> actv.observable = observer }
 

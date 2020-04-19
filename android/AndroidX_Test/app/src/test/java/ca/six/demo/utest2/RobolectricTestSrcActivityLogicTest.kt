@@ -7,23 +7,21 @@ import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import ca.six.demo.utest2.biz.main.MainActivity
+import ca.six.demo.utest2.temp.RobolectricTestSrcActivity
 import ca.six.demo.utest2.core.Worker
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.mockito.ArgumentMatchers
-import org.mockito.ArgumentMatchers.any
 import org.mockito.Mockito.*
 
 @RunWith(AndroidJUnit4::class)
-class MainActivityLogicTest {
-    lateinit var scenario: ActivityScenario<MainActivity>
+class RobolectricTestSrcActivityLogicTest {
+    lateinit var scenario: ActivityScenario<RobolectricTestSrcActivity>
 
     @Before
     fun setup() {
-        scenario = ActivityScenario.launch(MainActivity::class.java)
+        scenario = ActivityScenario.launch(RobolectricTestSrcActivity::class.java)
     }
 
     @After

@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".biz.main.MainActivity" />
+        <activity android:name=".temp.RobolectricTestSrcActivity" />
 
     </application>
 

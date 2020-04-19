@@ -1,4 +1,4 @@
-package ca.six.demo.utest2.biz.main
+package ca.six.demo.utest2.temp
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -8,7 +8,7 @@ import ca.six.demo.utest2.core.MyObservable
 import ca.six.demo.utest2.core.Worker
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(R.layout.activity_main), IListener {
+class RobolectricTestSrcActivity : AppCompatActivity(R.layout.activity_main), IListener {
     var observable = MyObservable(this)
     lateinit var worker: Worker
 
