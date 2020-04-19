@@ -13,11 +13,12 @@ import org.mockito.Mockito.mock
 
 @ExperimentalCoroutinesApi
 class SplashViewModelTest {
-    @get:Rule var instantExecutorRule = InstantTaskExecutorRule()
+    @get:Rule
+    var instantExecutorRule = InstantTaskExecutorRule()
     // private val testDispatcher = TestCoroutineDispatcher()
 
     @Test
-    fun testStart() = runBlockingTest {
+    fun startSplash_shouldGetImageFromHttp() = runBlockingTest {
         val expected = "http://111.jpg"
         val mockHttp = mock(HttpEngine::class.java)
         `when`(mockHttp.splash()).thenReturn(expected)
@@ -30,5 +31,20 @@ class SplashViewModelTest {
 
         val img = LiveDataTestUtil.getValue(vm.imageLive)
         assertEquals(expected, img)
+    }
+
+    @Test
+    fun startSplash_shouldNavToNextPage() {
+        val mockHttp = mock(HttpEngine::class.java)
+        `when`(mockHttp.splash()).thenReturn("")
+
+        val vm = SplashViewModel()
+        val event1 = LiveDataTestUtil.getValue(vm.navigationEvent)
+        println("event = $event1")
+        vm.http = mockHttp
+        vm.start()
+
+        val event = LiveDataTestUtil.getValue(vm.navigationEvent)
+        println("event = $event")
     }
 }
