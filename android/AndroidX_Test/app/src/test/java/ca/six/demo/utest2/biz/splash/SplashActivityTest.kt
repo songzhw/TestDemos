@@ -16,6 +16,7 @@ import org.robolectric.Shadows.shadowOf
 @ExperimentalCoroutinesApi
 @RunWith(AndroidJUnit4::class)
 class SplashActivityTest {
+    @get:Rule var instantExecutorRule = InstantTaskExecutorRule()
     lateinit var scenario: ActivityScenario<SplashActivity>
 
     @Before
