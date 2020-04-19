@@ -21,19 +21,25 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
-        println("111")
 
         vm = ViewModelProvider(this).get(SplashViewModel::class.java)
         vm.start()
-        println("222")
 
         vm.imageLive.observe(this,
             Observer { imgUrl -> Picasso.get().load(imgUrl).into(ivSplashBg); })
 
         vm.navigationEvent.observe(this,
             Observer { nav<MainActivity>(); this.finish(); })
+    }
 
-        println("333")
+    override fun onResume() {
+        super.onResume()
+        println("resume")
+    }
+
+    override fun onStart() {
+        super.onStart()
+        println("start")
     }
 }
 
