@@ -4,8 +4,6 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import ca.six.demo.utest2.core.http.HttpEngine
 import ca.six.demo.utest2.utils.LiveDataTestUtil
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.test.TestCoroutineDispatcher
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Assert.assertEquals
 import org.junit.Rule
@@ -15,8 +13,8 @@ import org.mockito.Mockito.mock
 
 @ExperimentalCoroutinesApi
 class SplashViewModelTest {
-    //@get:Rule var instantExecutorRule = InstantTaskExecutorRule()
-    private val testDispatcher = TestCoroutineDispatcher()
+    @get:Rule var instantExecutorRule = InstantTaskExecutorRule()
+    // private val testDispatcher = TestCoroutineDispatcher()
 
     @Test
     fun testStart() = runBlockingTest {
@@ -25,11 +23,12 @@ class SplashViewModelTest {
         `when`(mockHttp.splash()).thenReturn(expected)
         // doReturn(expected).`when`(mockHttp).splash()
 
-        val vm = SplashViewModel(testDispatcher)
+        // val vm = SplashViewModel(testDispatcher)
+        val vm = SplashViewModel()
         vm.http = mockHttp
         vm.start()
 
         val img = LiveDataTestUtil.getValue(vm.imageLive)
-        assertEquals(333, img)
+        assertEquals(expected, img)
     }
 }
