@@ -9,7 +9,7 @@ data class ItemData(val src: JSONObject) {
 
     init {
         id = src.optString("id")
-        name = src.optString("id")
+        name = src.optString("name")
         image = src.optString("img")
     }
 }
