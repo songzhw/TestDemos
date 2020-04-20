@@ -10,11 +10,13 @@ import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
 import androidx.collection.SparseArrayCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 
 /**
  * Created by songzhw on 2016-08-12
  */
-class RvViewHolder private constructor(private val convertView: View) : RecyclerView.ViewHolder(convertView) {
+class RvViewHolder private constructor(private val convertView: View) :
+    RecyclerView.ViewHolder(convertView) {
     private val views: SparseArrayCompat<View>
 
     init {
@@ -73,4 +75,10 @@ class RvViewHolder private constructor(private val convertView: View) : Recycler
         }
     }
 
+}
+
+// 涉及到具体三方库, 后面可能会改(如由Picasso改为Glide, Fresco....), 所以单独拎出来, 作为猴子补丁
+fun RvViewHolder.setSrc(id: Int, imageUrl: String) {
+    val iv = getView<ImageView>(id)
+    Picasso.get().load(imageUrl).into(iv)
 }
