@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import ca.six.demo.utest2.R
 import ca.six.demo.utest2.core.http.HttpEngineWithIO
+import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.coroutines.launch
 
 class HomeActivity : AppCompatActivity(R.layout.activity_home) {
@@ -19,15 +20,15 @@ class HomeActivity : AppCompatActivity(R.layout.activity_home) {
 
         lifecycleScope.launch {
             val motto = vm.home()
-            println("szw motto = $motto")
+            tvMotto.text = motto
         }
     }
 }
 
 class HomeViewModel : ViewModel() {
+    var http: HttpEngineWithIO = HttpEngineWithIO()
 
     suspend fun home(): String {
-        val http = HttpEngineWithIO()
         val resp = http.home()
         return resp
     }
