@@ -22,6 +22,10 @@ class HomeActivity : AppCompatActivity(R.layout.activity_home) {
             val motto = vm.home()
             tvMotto.text = motto
         }
+
+        btnHomeNavItems.setOnClickListener {
+
+        }
     }
 }
 
