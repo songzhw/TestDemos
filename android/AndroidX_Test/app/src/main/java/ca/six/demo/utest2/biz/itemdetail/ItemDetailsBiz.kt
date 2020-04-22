@@ -18,6 +18,7 @@ class ItemDetailsActivity : AppCompatActivity(R.layout.activity_item_detail) {
 
         tvItemDetail.text = name
         imageLoader = ImageLoader()
+        println("szw il = $imageLoader")
         imageLoader.load(ivItemDetail, image)
 
     }

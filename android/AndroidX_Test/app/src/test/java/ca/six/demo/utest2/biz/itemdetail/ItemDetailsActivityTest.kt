@@ -28,8 +28,9 @@ class ItemDetailsActivityTest {
         it.putExtra("name", "computer")
         val scenario = launch<ItemDetailsActivity>(it)
 
-        val imageLoader = mock(ImageLoader::class.java)
-        doNothing().`when`(imageLoader.load(any(ImageView::class.java), anyString()))
+        val mockImageLoader = mock(ImageLoader::class.java)
+        doNothing().`when`(mockImageLoader.load(any(ImageView::class.java), anyString()))
+        scenario.onActivity { actv -> actv.imageLoader = mockImageLoader }
 
         onView(withId(R.id.tvItemDetail))
             .check(matches(withText("computer")))
