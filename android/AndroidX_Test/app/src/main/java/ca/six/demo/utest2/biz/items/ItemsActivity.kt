@@ -5,11 +5,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import ca.six.advk.utils.rv.OneAdapter
 import ca.six.advk.utils.rv.RvViewHolder
 import ca.six.advk.utils.rv.setSrc
 import ca.six.demo.utest2.R
 import ca.six.demo.utest2.core.data.ItemData
+import ca.six.demo.utest2.ui.rv.OnRvItemClickListener
 import kotlinx.android.synthetic.main.activity_items.*
 import kotlinx.coroutines.launch
 
@@ -31,6 +33,13 @@ class ItemsActivity : AppCompatActivity(R.layout.activity_items) {
             rvItems.layoutManager = LinearLayoutManager(this@ItemsActivity)
             rvItems.adapter = adapter
 
+            rvItems.addOnItemTouchListener(object : OnRvItemClickListener(rvItems) {
+                override fun onItemClick(vh: RecyclerView.ViewHolder) {
+                    val index = vh.layoutPosition
+                    val item = items[index]
+                    println("szw $item")
+                }
+            })
         }
     }
 }
