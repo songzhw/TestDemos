@@ -22,7 +22,7 @@ class ItemDetailsActivityTest {
         val scenario = launch<ItemDetailsActivity>(it)
 
         Espresso.onView(ViewMatchers.withId(R.id.tvItemDetail))
-            .check(ViewAssertions.matches(ViewMatchers.withText("MainActivity")))
+            .check(ViewAssertions.matches(ViewMatchers.withText("computer")))
 
 
         scenario.close()

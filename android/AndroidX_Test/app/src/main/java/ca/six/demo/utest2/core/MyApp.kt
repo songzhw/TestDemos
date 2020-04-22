@@ -7,6 +7,7 @@ class MyApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        println("szw Application")
     }
 
     fun changeId() {
