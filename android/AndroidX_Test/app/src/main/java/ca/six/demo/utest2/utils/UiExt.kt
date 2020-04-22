@@ -10,9 +10,9 @@ inline fun <reified T : Activity> Activity.nav() {
 inline fun <reified T : Activity> Activity.nav(arg: Map<String, Any>) {
     val it = Intent(this, T::class.java)
     for ((key, value) in arg) {
-        if (value is Int || value is String) {
-            it.putExtra(key, value)
-        }
+        if (value is Int) it.putExtra(key, value)
+        if (value is String) it.putExtra(key, value)
+        if (value is Boolean) it.putExtra(key, value)
     }
     startActivity(it)
 }
