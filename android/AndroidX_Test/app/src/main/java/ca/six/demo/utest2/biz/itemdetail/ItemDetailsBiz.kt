@@ -14,7 +14,7 @@ class ItemDetailsActivity : AppCompatActivity(R.layout.activity_item_detail) {
         val name = intent.getStringExtra("name")
         val image = intent.getStringExtra("img")
         tvItemDetail.text = name
-        Picasso.get().load(image).into(ivItemDetail)
+//        Picasso.get().load(image).into(ivItemDetail)
 
     }
 }
