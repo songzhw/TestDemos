@@ -25,6 +25,7 @@
 
         <activity android:name=".temp.RobolectricTestSrcActivity" />
         <activity android:name=".biz.items.ItemsActivity" />
+        <activity android:name=".biz.itemdetail.ItemDetailsActivity" />
 
     </application>
 

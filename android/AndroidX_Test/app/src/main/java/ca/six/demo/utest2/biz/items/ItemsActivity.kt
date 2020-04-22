@@ -10,8 +10,10 @@ import ca.six.advk.utils.rv.OneAdapter
 import ca.six.advk.utils.rv.RvViewHolder
 import ca.six.advk.utils.rv.setSrc
 import ca.six.demo.utest2.R
+import ca.six.demo.utest2.biz.itemdetail.ItemDetailsActivity
 import ca.six.demo.utest2.core.data.ItemData
 import ca.six.demo.utest2.ui.rv.OnRvItemClickListener
+import ca.six.demo.utest2.utils.nav
 import kotlinx.android.synthetic.main.activity_items.*
 import kotlinx.coroutines.launch
 
@@ -37,7 +39,7 @@ class ItemsActivity : AppCompatActivity(R.layout.activity_items) {
                 override fun onItemClick(vh: RecyclerView.ViewHolder) {
                     val index = vh.layoutPosition
                     val item = items[index]
-                    println("szw $item")
+                    nav<ItemDetailsActivity>(mapOf("name" to item.name, "img" to item.image))
                 }
             })
         }
