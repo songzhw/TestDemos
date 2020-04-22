@@ -5,10 +5,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
 import ca.six.demo.utest2.R
 import ca.six.demo.utest2.core.image.ImageLoader
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_item_detail.*
 
 class ItemDetailsActivity : AppCompatActivity(R.layout.activity_item_detail) {
-    lateinit var imageLoader: ImageLoader
+//    lateinit var imageLoader: ImageLoader
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,10 +18,9 @@ class ItemDetailsActivity : AppCompatActivity(R.layout.activity_item_detail) {
         val image = intent.getStringExtra("img")
 
         tvItemDetail.text = name
-        imageLoader = ImageLoader()
-        println("szw il = $imageLoader")
-        imageLoader.load(ivItemDetail, image)
-
+//        imageLoader = ImageLoader()
+//        imageLoader.load(ivItemDetail, image)
+        Picasso.get().load(image).into(ivItemDetail)
     }
 }
 
