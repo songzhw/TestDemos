@@ -17,6 +17,7 @@ import ca.six.demo.utest2.R
 import ca.six.demo.utest2.biz.itemdetail.ItemDetailsActivity
 import ca.six.demo.utest2.core.data.ItemData
 import ca.six.demo.utest2.ui.rv.OnRvItemClickListener
+import ca.six.demo.utest2.utils.nav
 import kotlinx.android.synthetic.main.activity_items.*
 import kotlinx.coroutines.launch
 
@@ -43,16 +44,9 @@ class ItemsActivity : AppCompatActivity(R.layout.activity_items) {
                 override fun onItemClick(vh: RecyclerView.ViewHolder) {
                     val index = vh.layoutPosition
                     val item = items[index]
-//                    nav<ItemDetailsActivity>(mapOf("name" to item.name, "img" to item.image))
-
-
                     val imagePair: Pair<View, String> = Pair(vh.itemView.findViewById(R.id.ivItemItems), "itemPic")
                     val textPair: Pair<View, String> = Pair(vh.itemView.findViewById(R.id.tvItemItems), "itemName")
-                    val opt = ActivityOptionsCompat.makeSceneTransitionAnimation(this@ItemsActivity, imagePair, textPair)
-                    val intent = Intent(this@ItemsActivity, ItemDetailsActivity::class.java)
-                    intent.putExtra("name", item.name)
-                    intent.putExtra("img", item.image)
-                    startActivity(intent, opt.toBundle())
+                    nav<ItemDetailsActivity>(mapOf("name" to item.name, "img" to item.image),  imagePair, textPair)
                 }
             })
         }
