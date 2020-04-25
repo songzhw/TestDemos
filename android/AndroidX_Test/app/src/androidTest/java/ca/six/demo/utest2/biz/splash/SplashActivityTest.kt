@@ -22,11 +22,11 @@ class SplashTest {
     @get:Rule val activityRule = ActivityTestRule(SplashActivity::class.java)
 
     @Before fun registerIdlingResource() {
-        IdlingRegistry.getInstance().register(EspressoIdlingResource.countingIdlingResource)
+//        IdlingRegistry.getInstance().register(EspressoIdlingResource.countingIdlingResource)
     }
 
     @After fun unregisterIdlingResource() {
-        IdlingRegistry.getInstance().unregister(EspressoIdlingResource.countingIdlingResource)
+//        IdlingRegistry.getInstance().unregister(EspressoIdlingResource.countingIdlingResource)
     }
 
     @Test fun testSplash_imageShouldDisplay() {
@@ -35,7 +35,9 @@ class SplashTest {
     }
 
     @Test fun testSplash_homePageShouldDisplay() {
+        IdlingRegistry.getInstance().register(EspressoIdlingResource.countingIdlingResource)
         onView(withId(R.id.tvMotto))
             .check(matches(isDisplayed()))
+        IdlingRegistry.getInstance().unregister(EspressoIdlingResource.countingIdlingResource)
     }
 }
