@@ -9,7 +9,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
 import androidx.test.rule.ActivityTestRule
 import ca.six.demo.utest2.R
-import com.example.android.architecture.blueprints.todoapp.util.EspressoIdlingResource
+import ca.six.demo.utest2.core.test.EspressoIdlingResource
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
@@ -35,9 +35,9 @@ class SplashTest {
     }
 
     @Test fun testSplash_homePageShouldDisplay() {
-        IdlingRegistry.getInstance().register(EspressoIdlingResource.countingIdlingResource)
+        IdlingRegistry.getInstance().register(EspressoIdlingResource.countingIdlings)
         onView(withId(R.id.tvMotto))
             .check(matches(isDisplayed()))
-        IdlingRegistry.getInstance().unregister(EspressoIdlingResource.countingIdlingResource)
+        IdlingRegistry.getInstance().unregister(EspressoIdlingResource.countingIdlings)
     }
 }

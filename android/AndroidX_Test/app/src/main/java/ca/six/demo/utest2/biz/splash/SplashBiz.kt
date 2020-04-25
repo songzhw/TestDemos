@@ -3,13 +3,12 @@ package ca.six.demo.utest2.biz.splash
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.*
-import androidx.test.espresso.idling.CountingIdlingResource
 import ca.six.demo.utest2.R
 import ca.six.demo.utest2.biz.home.HomeActivity
 import ca.six.demo.utest2.core.arch.Event
 import ca.six.demo.utest2.core.http.HttpEngine
 import ca.six.demo.utest2.utils.nav
-import com.example.android.architecture.blueprints.todoapp.util.EspressoIdlingResource
+import ca.six.demo.utest2.core.test.EspressoIdlingResource
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_splash.*
 import kotlinx.coroutines.CoroutineDispatcher

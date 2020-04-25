@@ -9,7 +9,6 @@ import ca.six.demo.utest2.R
 import ca.six.demo.utest2.biz.items.ItemsActivity
 import ca.six.demo.utest2.core.http.HttpEngineWithIO
 import ca.six.demo.utest2.utils.nav
-import com.example.android.architecture.blueprints.todoapp.util.EspressoIdlingResource
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.coroutines.launch
 
