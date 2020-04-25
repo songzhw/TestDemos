@@ -23,4 +23,8 @@ class SplashTest {
             .check(matches(isDisplayed()))
     }
 
+    @Test fun testSplash_homePageShouldDisplay() {
+        onView(withId(R.id.tvMotto))
+            .check(matches(isDisplayed()))
+    }
 }
