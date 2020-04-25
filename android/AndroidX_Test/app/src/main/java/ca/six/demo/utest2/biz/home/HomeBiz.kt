@@ -29,7 +29,6 @@ class HomeActivity : AppCompatActivity(R.layout.activity_home) {
         btnHomeNavItems.setOnClickListener {
             nav<ItemsActivity>()
         }
-        EspressoIdlingResource.decrement()
     }
 }
 

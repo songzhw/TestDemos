@@ -47,6 +47,7 @@ class SplashViewModel(val dispatcher: CoroutineDispatcher = Dispatchers.IO) : Vi
             imageLive.postValue(resp)
             Thread.sleep(2000)
             navigationEvent.postValue(Event(Unit))
+            EspressoIdlingResource.decrement()
         }
     }
 }
