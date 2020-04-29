@@ -21,14 +21,6 @@ import org.junit.runner.RunWith
 class SplashTest {
     @get:Rule val activityRule = ActivityTestRule(SplashActivity::class.java)
 
-    @Before fun registerIdlingResource() {
-//        IdlingRegistry.getInstance().register(EspressoIdlingResource.countingIdlingResource)
-    }
-
-    @After fun unregisterIdlingResource() {
-//        IdlingRegistry.getInstance().unregister(EspressoIdlingResource.countingIdlingResource)
-    }
-
     @Test fun testSplash_imageShouldDisplay() {
         onView(withId(R.id.ivSplashBg))
             .check(matches(isDisplayed()))

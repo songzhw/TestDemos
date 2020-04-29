@@ -2,11 +2,13 @@ package ca.six.demo.utest2.biz.itemdetail
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import ca.six.demo.utest2.R
-import ca.six.demo.utest2.core.image.ImageLoader
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_item_detail.*
+import kotlinx.coroutines.launch
 
 class ItemDetailsActivity : AppCompatActivity(R.layout.activity_item_detail) {
 //    lateinit var imageLoader: ImageLoader
@@ -25,7 +27,11 @@ class ItemDetailsActivity : AppCompatActivity(R.layout.activity_item_detail) {
 }
 
 class ItemDetailViewModel : ViewModel() {
-    fun start() {
+    val textLive = MutableLiveData<String>()
 
+    fun start() {
+        viewModelScope.launch {
+            textLive.postValue("hello")
+        }
     }
 }
