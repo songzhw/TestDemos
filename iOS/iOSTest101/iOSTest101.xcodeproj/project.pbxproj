@@ -17,6 +17,8 @@
 		FE91DCF024F6B1BA0034B1FE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FE91DCEF24F6B1BA0034B1FE /* main.m */; };
 		FE91DCFA24F6B1BB0034B1FE /* iOSTest101Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = FE91DCF924F6B1BB0034B1FE /* iOSTest101Tests.m */; };
 		FE91DD0524F6B1BB0034B1FE /* iOSTest101UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FE91DD0424F6B1BB0034B1FE /* iOSTest101UITests.m */; };
+		FE91DD1524F6B54A0034B1FE /* URLWorker.m in Sources */ = {isa = PBXBuildFile; fileRef = FE91DD1424F6B54A0034B1FE /* URLWorker.m */; };
+		FE91DD1724F6CEE60034B1FE /* UrlWorkerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FE91DD1624F6CEE60034B1FE /* UrlWorkerTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +58,9 @@
 		FE91DD0024F6B1BB0034B1FE /* iOSTest101UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSTest101UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE91DD0424F6B1BB0034B1FE /* iOSTest101UITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iOSTest101UITests.m; sourceTree = "<group>"; };
 		FE91DD0624F6B1BB0034B1FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FE91DD1324F6B54A0034B1FE /* URLWorker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = URLWorker.h; sourceTree = "<group>"; };
+		FE91DD1424F6B54A0034B1FE /* URLWorker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = URLWorker.m; sourceTree = "<group>"; };
+		FE91DD1624F6CEE60034B1FE /* UrlWorkerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UrlWorkerTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +111,7 @@
 		FE91DCD924F6B1B90034B1FE /* iOSTest101 */ = {
 			isa = PBXGroup;
 			children = (
+				FE91DD1224F6B4DA0034B1FE /* simple */,
 				FE91DCDA24F6B1B90034B1FE /* AppDelegate.h */,
 				FE91DCDB24F6B1B90034B1FE /* AppDelegate.m */,
 				FE91DCDD24F6B1B90034B1FE /* SceneDelegate.h */,
@@ -127,6 +133,7 @@
 			children = (
 				FE91DCF924F6B1BB0034B1FE /* iOSTest101Tests.m */,
 				FE91DCFB24F6B1BB0034B1FE /* Info.plist */,
+				FE91DD1624F6CEE60034B1FE /* UrlWorkerTests.m */,
 			);
 			path = iOSTest101Tests;
 			sourceTree = "<group>";
@@ -138,6 +145,15 @@
 				FE91DD0624F6B1BB0034B1FE /* Info.plist */,
 			);
 			path = iOSTest101UITests;
+			sourceTree = "<group>";
+		};
+		FE91DD1224F6B4DA0034B1FE /* simple */ = {
+			isa = PBXGroup;
+			children = (
+				FE91DD1324F6B54A0034B1FE /* URLWorker.h */,
+				FE91DD1424F6B54A0034B1FE /* URLWorker.m */,
+			);
+			path = simple;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -275,6 +291,7 @@
 				FE91DCE224F6B1B90034B1FE /* ViewController.m in Sources */,
 				FE91DCDC24F6B1B90034B1FE /* AppDelegate.m in Sources */,
 				FE91DCDF24F6B1B90034B1FE /* SceneDelegate.m in Sources */,
+				FE91DD1524F6B54A0034B1FE /* URLWorker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,6 +300,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FE91DCFA24F6B1BB0034B1FE /* iOSTest101Tests.m in Sources */,
+				FE91DD1724F6CEE60034B1FE /* UrlWorkerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
