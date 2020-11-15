@@ -1,7 +1,8 @@
 import React, { useLayoutEffect } from "react";
-import { View, ViewProps, Text, StyleSheet, SafeAreaView, FlatList, ListRenderItemInfo, Button } from "react-native";
+import { View, ViewProps, Text, StyleSheet, SafeAreaView, FlatList, ListRenderItemInfo } from "react-native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { StackParamList } from "../../App";
+import { Button } from "../ui/Button";
 
 interface IData {
   id: string;
@@ -42,7 +43,7 @@ export const HomeScreen = (props: IProps) => {
   useLayoutEffect(() => {
     props.navigation.setOptions(({
       headerRight: () => (
-        <Button onPress={() => console.log(`szw click btn`)} title="+" />
+        <Button onClick={() => props.navigation.navigate("detail")} text="+" textStyle={styles.btnAdd} />
       )
     }));
   });
@@ -67,5 +68,6 @@ export const HomeScreen = (props: IProps) => {
 const styles = StyleSheet.create({
   root: { flex: 1 },
   item: { margin: 10 },
-  title: { fontSize: 20 }
+  title: { fontSize: 20 },
+  btnAdd: { fontSize: 25, width: 40, textAlign: "center" }
 });
