@@ -19,7 +19,9 @@
   URLWorker* worker = [URLWorker new];
   NSString* url = @"https://www.a.com/";
   NSDictionary* result = [worker getParams:url];
-  XCTAssertTrue([result isEqualToDictionary:nil]);
+  NSLog(@"result = %@", result);
+  // XCTAssertTrue([result isEqualToDictionary:nil]); //这会失败. 因为nil不是字典
+  XCTAssertEqual(result, nil);
 }
 
 
