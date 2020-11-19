@@ -3,14 +3,15 @@ import { View, ViewProps, Text, StyleSheet, TouchableOpacity, StyleProp, ViewSty
 
 interface IProps extends ViewProps {
   onClick: () => void;
-  text: string,
-  textStyle: StyleProp<TextStyle>
+  text: string;
+  textStyle: StyleProp<TextStyle>;
+  testID?: string;
 }
 
 export const Button = (props: IProps) => {
   return (
     <View style={props.style}>
-      <TouchableOpacity onPress={props.onClick} style={styles.fillParent}>
+      <TouchableOpacity onPress={props.onClick} style={styles.fillParent} testID={props.testID}>
         <Text style={props.textStyle}>{props.text}</Text>
       </TouchableOpacity>
     </View>

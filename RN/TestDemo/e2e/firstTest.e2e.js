@@ -8,7 +8,7 @@ describe("HomeScreen", () => {
   });
 
   it("should show hello screen after tap", async () => {
-    await element(by.id("btnAdd")).tap();
+    await element(by.id("btnAdd")).tap(); //这里会切到另一页, 但没事, Detox会等待另一页出现的
     await expect(element(by.text("Detail"))).toBeVisible();
   });
 
