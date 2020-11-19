@@ -21,6 +21,7 @@
 		FE91DD1724F6CEE60034B1FE /* UrlWorkerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FE91DD1624F6CEE60034B1FE /* UrlWorkerTests.m */; };
 		FEE18ABB2566DA5B009E62AC /* LoginLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = FEE18ABA2566DA5B009E62AC /* LoginLogic.m */; };
 		FEE18AC12566DA63009E62AC /* HttpEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = FEE18AC02566DA63009E62AC /* HttpEngine.m */; };
+		FEE18AC62566DDE2009E62AC /* LoginLogicTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FEE18AC52566DDE2009E62AC /* LoginLogicTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		FEE18ABA2566DA5B009E62AC /* LoginLogic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginLogic.m; sourceTree = "<group>"; };
 		FEE18ABF2566DA63009E62AC /* HttpEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HttpEngine.h; sourceTree = "<group>"; };
 		FEE18AC02566DA63009E62AC /* HttpEngine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HttpEngine.m; sourceTree = "<group>"; };
+		FEE18AC52566DDE2009E62AC /* LoginLogicTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginLogicTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +143,7 @@
 				FE91DCF924F6B1BB0034B1FE /* iOSTest101Tests.m */,
 				FE91DCFB24F6B1BB0034B1FE /* Info.plist */,
 				FE91DD1624F6CEE60034B1FE /* UrlWorkerTests.m */,
+				FEE18AC52566DDE2009E62AC /* LoginLogicTest.m */,
 			);
 			path = iOSTest101Tests;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FE91DCFA24F6B1BB0034B1FE /* iOSTest101Tests.m in Sources */,
+				FEE18AC62566DDE2009E62AC /* LoginLogicTest.m in Sources */,
 				FE91DD1724F6CEE60034B1FE /* UrlWorkerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
