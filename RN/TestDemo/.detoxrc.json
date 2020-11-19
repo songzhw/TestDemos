@@ -5,7 +5,7 @@
     "ios": {
       "type": "ios.simulator",
       "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/TestDemo.app",
-      "build": "xcodebuild -workspace ios/TestDemo.xcworkspace -scheme TestDemo -configuration Debug -derivedDataPath ios/build -destination id=8F87C7C2-AC0A-4086-82F7-2864E55E8B14",
+      "build": "xcodebuild -workspace ios/TestDemo.xcworkspace -scheme TestDemo -configuration Debug -derivedDataPath ios/build -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 12,OS=latest'",
       "device": {
         "type": "iPhone 11"
       }
