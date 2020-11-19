@@ -8,7 +8,7 @@ describe("HomeScreen", () => {
   });
 
   it("should show hello screen after tap", async () => {
-    await element(by.text("+")).tap();
+    await element(by.id("btnAdd")).tap();
     await expect(element(by.text("Detail"))).toBeVisible();
   });
 

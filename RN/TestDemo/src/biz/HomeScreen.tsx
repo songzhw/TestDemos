@@ -43,7 +43,7 @@ export const HomeScreen = (props: IProps) => {
   useLayoutEffect(() => {
     props.navigation.setOptions(({
       headerRight: () => (
-        <Button onClick={() => props.navigation.navigate("detail")} text="+" textStyle={styles.btnAdd} />
+        <Button onClick={() => props.navigation.navigate("detail")} text="+" textStyle={styles.btnAdd} testID="btnAdd"/>
       )
     }));
   });
