@@ -4,31 +4,9 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import { StackParamList } from "../../App";
 import { Button } from "../ui/Button";
 import { HttpEngine } from "../core/HttpEngine";
+import { ITodoItem, TodoItem } from "./TodoItem";
 
-export interface ITodoItem {
-  id: string;
-  title: string;
-  color: string;
-  isDone: boolean;
-}
-
-interface IItemProps {
-  datum: ITodoItem,
-  navigation: HomeNavProp
-}
-
-// const Item = ({ title }: { title: string }) => {
-const Item = (props: IItemProps) => {
-  const { datum } = props;
-  return (
-    <View style={[styles.item, { backgroundColor: datum.color }]}>
-      <Button onClick={() => props.navigation.navigate("detail", { datum: datum })}
-              text={datum.title} textStyle={styles.title} />
-    </View>
-  );
-};
-
-type HomeNavProp = StackNavigationProp<StackParamList, "home">
+export type HomeNavProp = StackNavigationProp<StackParamList, "home">
 
 interface IProps extends ViewProps {
   navigation: HomeNavProp
@@ -54,7 +32,7 @@ export const HomeScreen = (props: IProps) => {
 
 
   const renderItem = (item: ListRenderItemInfo<ITodoItem>) => (
-    <Item datum={item.item} navigation={props.navigation} />
+    <TodoItem datum={item.item} navigation={props.navigation} />
   );
 
   return (
@@ -71,7 +49,5 @@ export const HomeScreen = (props: IProps) => {
 
 const styles = StyleSheet.create({
   root: { flex: 1 },
-  item: { padding: 25 },
-  title: { fontSize: 23, color: "white" },
   btnAdd: { fontSize: 25, width: 40, textAlign: "center" }
 });

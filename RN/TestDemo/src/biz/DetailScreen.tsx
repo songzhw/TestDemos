@@ -1,6 +1,5 @@
 import React from "react";
 import { View, ViewProps, Text, StyleSheet } from "react-native";
-import { ITodoItem } from "./HomeScreen";
 import { RouteProp } from "@react-navigation/native";
 import { StackParamList } from "../../App";
 
