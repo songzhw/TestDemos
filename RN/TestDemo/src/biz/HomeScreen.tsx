@@ -23,7 +23,7 @@ const Item = (props: IItemProps) => {
   return (
     <View style={[styles.item, { backgroundColor: datum.color }]}>
       <Button onClick={() => props.navigation.navigate("detail", { datum: datum })}
-              text={datum.title} textStyle={styles.title} testID="btnAdd" />
+              text={datum.title} textStyle={styles.title} />
     </View>
   );
 };
