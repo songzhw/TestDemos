@@ -5,22 +5,25 @@ import { StackParamList } from "../../App";
 import { Button } from "../ui/Button";
 import { HttpEngine } from "../core/HttpEngine";
 
-interface ITodoItem {
+export interface ITodoItem {
   id: string;
   title: string;
   color: string;
   isDone: boolean;
 }
 
-interface IItemProps{
-  datum: ITodoItem
+interface IItemProps {
+  datum: ITodoItem,
+  navigation: HomeNavProp
 }
+
 // const Item = ({ title }: { title: string }) => {
 const Item = (props: IItemProps) => {
-  const {datum} = props
+  const { datum } = props;
   return (
-    <View style={[styles.item, {backgroundColor: datum.color}]}>
-      <Text style={[styles.title]}>{datum.title}</Text>
+    <View style={[styles.item, { backgroundColor: datum.color }]}>
+      <Button onClick={() => props.navigation.navigate("detail", { datum: datum })}
+              text={datum.title} textStyle={styles.title} testID="btnAdd" />
     </View>
   );
 };
@@ -38,8 +41,8 @@ export const HomeScreen = (props: IProps) => {
   useLayoutEffect(() => {
     props.navigation.setOptions(({
       headerRight: () => (
-        <Button onClick={() => props.navigation.navigate("detail")} text="+" textStyle={styles.btnAdd}
-                testID="btnAdd" />
+        <Button onClick={() => {
+        }} text="+" textStyle={styles.btnAdd} testID="btnAdd" />
       )
     }));
   });
@@ -51,7 +54,7 @@ export const HomeScreen = (props: IProps) => {
 
 
   const renderItem = (item: ListRenderItemInfo<ITodoItem>) => (
-    <Item datum={item.item} />
+    <Item datum={item.item} navigation={props.navigation} />
   );
 
   return (
@@ -68,7 +71,7 @@ export const HomeScreen = (props: IProps) => {
 
 const styles = StyleSheet.create({
   root: { flex: 1 },
-  item: { padding: 10 },
-  title: { fontSize: 20, color: "white" },
+  item: { padding: 25 },
+  title: { fontSize: 23, color: "white" },
   btnAdd: { fontSize: 25, width: 40, textAlign: "center" }
 });

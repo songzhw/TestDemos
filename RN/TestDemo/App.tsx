@@ -15,14 +15,14 @@ import {
   DebugInstructions,
   ReloadInstructions
 } from "react-native/Libraries/NewAppScreen";
-import { HomeScreen } from "./src/biz/HomeScreen";
+import { HomeScreen, ITodoItem } from "./src/biz/HomeScreen";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 import { DetailScreen } from "./src/biz/DetailScreen";
 
 export type StackParamList = {
   home: undefined;
-  detail: undefined;
+  detail: { datum: ITodoItem };
 }
 
 const Stack = createStackNavigator();

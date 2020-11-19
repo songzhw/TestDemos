@@ -4,7 +4,7 @@ describe("HomeScreen", () => {
   });
 
   it("should have home screen", async () => {
-    await expect(element(by.text("First Item"))).toBeVisible();
+    await expect(element(by.text("Honey"))).toBeVisible();
   });
 
   it("should show hello screen after tap", async () => {
