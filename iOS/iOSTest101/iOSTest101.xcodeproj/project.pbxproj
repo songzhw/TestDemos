@@ -19,6 +19,8 @@
 		FE91DD0524F6B1BB0034B1FE /* iOSTest101UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FE91DD0424F6B1BB0034B1FE /* iOSTest101UITests.m */; };
 		FE91DD1524F6B54A0034B1FE /* URLWorker.m in Sources */ = {isa = PBXBuildFile; fileRef = FE91DD1424F6B54A0034B1FE /* URLWorker.m */; };
 		FE91DD1724F6CEE60034B1FE /* UrlWorkerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FE91DD1624F6CEE60034B1FE /* UrlWorkerTests.m */; };
+		FEE18ABB2566DA5B009E62AC /* LoginLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = FEE18ABA2566DA5B009E62AC /* LoginLogic.m */; };
+		FEE18AC12566DA63009E62AC /* HttpEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = FEE18AC02566DA63009E62AC /* HttpEngine.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,10 @@
 		FE91DD1324F6B54A0034B1FE /* URLWorker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = URLWorker.h; sourceTree = "<group>"; };
 		FE91DD1424F6B54A0034B1FE /* URLWorker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = URLWorker.m; sourceTree = "<group>"; };
 		FE91DD1624F6CEE60034B1FE /* UrlWorkerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UrlWorkerTests.m; sourceTree = "<group>"; };
+		FEE18AB92566DA5B009E62AC /* LoginLogic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginLogic.h; sourceTree = "<group>"; };
+		FEE18ABA2566DA5B009E62AC /* LoginLogic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginLogic.m; sourceTree = "<group>"; };
+		FEE18ABF2566DA63009E62AC /* HttpEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HttpEngine.h; sourceTree = "<group>"; };
+		FEE18AC02566DA63009E62AC /* HttpEngine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HttpEngine.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +117,7 @@
 		FE91DCD924F6B1B90034B1FE /* iOSTest101 */ = {
 			isa = PBXGroup;
 			children = (
+				FEE18AB82566DA39009E62AC /* dependency */,
 				FE91DD1224F6B4DA0034B1FE /* simple */,
 				FE91DCDA24F6B1B90034B1FE /* AppDelegate.h */,
 				FE91DCDB24F6B1B90034B1FE /* AppDelegate.m */,
@@ -154,6 +161,17 @@
 				FE91DD1424F6B54A0034B1FE /* URLWorker.m */,
 			);
 			path = simple;
+			sourceTree = "<group>";
+		};
+		FEE18AB82566DA39009E62AC /* dependency */ = {
+			isa = PBXGroup;
+			children = (
+				FEE18AB92566DA5B009E62AC /* LoginLogic.h */,
+				FEE18ABA2566DA5B009E62AC /* LoginLogic.m */,
+				FEE18ABF2566DA63009E62AC /* HttpEngine.h */,
+				FEE18AC02566DA63009E62AC /* HttpEngine.m */,
+			);
+			path = dependency;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -286,10 +304,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FEE18ABB2566DA5B009E62AC /* LoginLogic.m in Sources */,
 				FE91DCF024F6B1BA0034B1FE /* main.m in Sources */,
 				FE91DCE824F6B1B90034B1FE /* iOSTest101.xcdatamodeld in Sources */,
 				FE91DCE224F6B1B90034B1FE /* ViewController.m in Sources */,
 				FE91DCDC24F6B1B90034B1FE /* AppDelegate.m in Sources */,
+				FEE18AC12566DA63009E62AC /* HttpEngine.m in Sources */,
 				FE91DCDF24F6B1B90034B1FE /* SceneDelegate.m in Sources */,
 				FE91DD1524F6B54A0034B1FE /* URLWorker.m in Sources */,
 			);
