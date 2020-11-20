@@ -20,7 +20,7 @@ export interface IItemProps {
 export const TodoItem = (props: IItemProps) => {
   const { datum } = props;
   return (
-    <View style={[styles.item, { backgroundColor: datum.color }]}>
+    <View style={[{ backgroundColor: datum.color }]}>
       <Button onClick={() => props.navigation.navigate("detail", { datum: datum })}
               text={datum.title} textStyle={styles.title} />
     </View>
@@ -28,6 +28,6 @@ export const TodoItem = (props: IItemProps) => {
 };
 
 const styles = StyleSheet.create({
-  item: { padding: 25 },
-  title: { fontSize: 23, color: "white" }
+  item: {  },
+  title: { fontSize: 50, color: "white", padding: 50 }
 });
