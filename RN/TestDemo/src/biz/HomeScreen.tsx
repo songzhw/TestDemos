@@ -26,7 +26,7 @@ export const HomeScreen = (props: IProps) => {
   });
 
   useEffect(() => {
-    http.request("https://run.mocky.io/v3/499b1c1a-1002-4200-a0c5-92d959dd67a3")
+    http.request("https://run.mocky.io/v3/0002d9dc-ddbd-4947-8306-33f6d70e17fb")
       .then(resp => setListData(resp.payload));
   }, []);
 
@@ -38,6 +38,7 @@ export const HomeScreen = (props: IProps) => {
   return (
     <SafeAreaView style={styles.root}>
       <FlatList
+        testID="homeList"
         data={listData}
         renderItem={renderItem}
         keyExtractor={item => item.id}
