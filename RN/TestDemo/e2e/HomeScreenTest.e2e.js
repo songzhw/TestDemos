@@ -2,7 +2,7 @@ describe("HomeScreen", () => {
   beforeEach(async () => {
     await device.reloadReactNative();
   });
-/*
+
   test("should have home screen", async () => {
     await expect(element(by.text("Honey"))).toBeVisible();
   });
@@ -11,7 +11,7 @@ describe("HomeScreen", () => {
     await element(by.text("Wine")).tap(); //这里会切到另一页, 但没事, Detox会等待另一页出现的
     await expect(element(by.text("#8e24aa"))).toBeVisible();
   });
-*/
+
   test("should swipe then tap", async () => {
     await waitFor(element(by.text("Bacon")))
       .toBeVisible()

@@ -16,19 +16,22 @@ export const HomeScreen = (props: IProps) => {
   const http = new HttpEngine();
   const [listData, setListData] = useState<ITodoItem[]>([]);
 
-  useLayoutEffect(() => {
-    props.navigation.setOptions(({
-      headerRight: () => (
-        <Button onClick={() => {
-        }} text="+" textStyle={styles.btnAdd} testID="btnAdd" />
-      )
-    }));
-  });
-
   useEffect(() => {
     http.request("https://run.mocky.io/v3/0002d9dc-ddbd-4947-8306-33f6d70e17fb")
       .then(resp => setListData(resp.payload));
   }, []);
+
+  useLayoutEffect(() => {
+    props.navigation.setOptions(({
+      headerRight: () => (
+        <Button onClick={onAddItem} text="+" textStyle={styles.btnAdd} testID="btnAdd" />
+      )
+    }));
+  });
+
+  const onAddItem = ()=>{
+
+  }
 
 
   const renderItem = (item: ListRenderItemInfo<ITodoItem>) => (
