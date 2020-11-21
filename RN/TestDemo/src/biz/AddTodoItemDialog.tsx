@@ -16,6 +16,7 @@ export const AddTodoItemDialog = (props: IProps) => {
     <View>
       <Modal isVisible={props.isVisible}>
         <View style={styles.root}>
+          <Text style={styles.title}>Add Todo Item</Text>
           <TextInput style={styles.input} onChangeText={textString => setText(textString)} value={text} placeholder={"todo item"}/>
           <Button onClick={() => props.onAddItem(text)} text="Add" textStyle={styles.buttonText} style={styles.button} />
         </View>
@@ -27,8 +28,9 @@ export const AddTodoItemDialog = (props: IProps) => {
 
 const styles = StyleSheet.create({
   root: {alignItems: "center", justifyContent: "center", backgroundColor: "white"},
-  input: { width: 200, height: 50, borderColor: "blue", borderWidth: 1 },
-  button: { width: 200, height: 50, backgroundColor: "blue" },
+  title: {fontSize: 25, marginTop: 20},
+  input: { width: 340, height: 50, borderColor: "blue", borderWidth: 1, marginVertical: 20 },
+  button: { width: 200, height: 50, backgroundColor: "blue", marginBottom: 20 },
   buttonText: {fontSize: 20, color: "white"}
 });
 
