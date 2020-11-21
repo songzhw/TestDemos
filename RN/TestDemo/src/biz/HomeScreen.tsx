@@ -5,6 +5,7 @@ import { StackParamList } from "../../App";
 import { Button } from "../ui/Button";
 import { HttpEngine } from "../core/HttpEngine";
 import { ITodoItem, TodoItem } from "./TodoItem";
+import { AddTodoItemDialog } from "./AddTodoItemDialog";
 
 export type HomeNavProp = StackNavigationProp<StackParamList, "home">
 
@@ -15,6 +16,7 @@ interface IProps extends ViewProps {
 export const HomeScreen = (props: IProps) => {
   const http = new HttpEngine();
   const [listData, setListData] = useState<ITodoItem[]>([]);
+  const [dialogVisible, setDialogVisible] = useState(false);
 
   useEffect(() => {
     http.request("https://run.mocky.io/v3/0002d9dc-ddbd-4947-8306-33f6d70e17fb")
@@ -24,14 +26,26 @@ export const HomeScreen = (props: IProps) => {
   useLayoutEffect(() => {
     props.navigation.setOptions(({
       headerRight: () => (
-        <Button onClick={onAddItem} text="+" textStyle={styles.btnAdd} testID="btnAdd" />
+        <Button onClick={onAddItemButtonPressed} text="+" textStyle={styles.btnAdd} testID="btnAdd" />
       )
     }));
   });
 
-  const onAddItem = ()=>{
+  const onAddItemButtonPressed = () => {
+    setDialogVisible(true);
+  };
 
-  }
+  const onAddItem = (text: string) => {
+    const newItem: ITodoItem = {
+      id: "tbd",
+      title: text,
+      color: "blue",
+      isDone: false
+    };
+
+    listData.push(newItem);
+    setListData(listData);
+  };
 
 
   const renderItem = (item: ListRenderItemInfo<ITodoItem>) => (
@@ -46,6 +60,8 @@ export const HomeScreen = (props: IProps) => {
         renderItem={renderItem}
         keyExtractor={item => item.id}
       />
+
+      <AddTodoItemDialog isVisible={dialogVisible} onAddItem={onAddItem}/>
     </SafeAreaView>
   );
 };
