@@ -21,4 +21,9 @@ describe("HomeScreen", () => {
     await expect(element(by.text("#4a148c"))).toBeVisible();
   });
 
+  test("add button", async () => {
+    await element(by.id("btnAdd")).tap();
+    await expect(element(by.text("Add Todo Item"))).toBeVisible();
+  });
+
 });
