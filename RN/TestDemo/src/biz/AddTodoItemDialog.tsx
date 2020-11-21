@@ -6,6 +6,7 @@ import { Button } from "../ui/Button";
 interface IProps extends ViewProps {
   isVisible: boolean;
   onAddItem: (title: string) => void;
+  onCloseDialog: ()=>void;
 }
 
 export const AddTodoItemDialog = (props: IProps) => {
@@ -19,7 +20,7 @@ export const AddTodoItemDialog = (props: IProps) => {
 
   return (
     <View>
-      <Modal isVisible={props.isVisible}>
+      <Modal isVisible={props.isVisible} onBackdropPress={props.onCloseDialog}>
         <View style={styles.root}>
           <Text style={styles.title}>Add Todo Item</Text>
           <TextInput style={styles.input} onChangeText={textString => setText(textString)} value={text} placeholder={"todo item"}/>
@@ -42,4 +43,6 @@ const styles = StyleSheet.create({
 /*
 1. Modal下面要有一层view, 不然children都不显示
 2. Model下这层View得有bg, 不然全是半透明色
+3. 做完事后(如点击完了add按钮), TextInput要手动清除, 不然就仍显示了上一次的输入
+4. 默认点击dialog之外, modal是不会消失的. 要想这样, 就得加上:
  */

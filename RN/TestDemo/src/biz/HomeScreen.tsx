@@ -48,6 +48,10 @@ export const HomeScreen = (props: IProps) => {
     setDialogVisible(false);
   };
 
+  const onCloseDialog = ()=>{
+    setDialogVisible(false)
+  }
+
 
   const renderItem = (item: ListRenderItemInfo<ITodoItem>) => (
     <TodoItem datum={item.item} navigation={props.navigation} />
@@ -62,7 +66,7 @@ export const HomeScreen = (props: IProps) => {
         keyExtractor={item => item.id}
       />
 
-      <AddTodoItemDialog isVisible={dialogVisible} onAddItem={onAddItem}/>
+      <AddTodoItemDialog isVisible={dialogVisible} onAddItem={onAddItem} onCloseDialog={onCloseDialog}/>
     </SafeAreaView>
   );
 };
