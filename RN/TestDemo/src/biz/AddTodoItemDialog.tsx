@@ -12,13 +12,18 @@ export const AddTodoItemDialog = (props: IProps) => {
 
   const [text, setText] = useState("");
 
+  const onButtonPress = ()=>{
+    props.onAddItem(text)
+    setText("")
+  }
+
   return (
     <View>
       <Modal isVisible={props.isVisible}>
         <View style={styles.root}>
           <Text style={styles.title}>Add Todo Item</Text>
           <TextInput style={styles.input} onChangeText={textString => setText(textString)} value={text} placeholder={"todo item"}/>
-          <Button onClick={() => props.onAddItem(text)} text="Add" textStyle={styles.buttonText} style={styles.button} />
+          <Button onClick={onButtonPress} text="Add" textStyle={styles.buttonText} style={styles.button} />
         </View>
       </Modal>
     </View>

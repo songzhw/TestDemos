@@ -45,6 +45,7 @@ export const HomeScreen = (props: IProps) => {
 
     listData.push(newItem);
     setListData(listData);
+    setDialogVisible(false);
   };
 
 
