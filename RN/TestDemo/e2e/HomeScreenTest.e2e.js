@@ -3,17 +3,22 @@ import { HttpEngine } from "../src/core/HttpEngine";
 jest.mock("../src/core/HttpEngine");
 
 describe("HomeScreen", () => {
-  beforeEach(async () => {
+
+  beforeAll(() => {
     const listData = {
       succ: true,
       payload: [
-        {id:"001as0d", title:"Onion", category: "grocery", isDone: false, color: "#9c27b0"}
+        { id: "001as0d", title: "Onion", category: "grocery", isDone: false, color: "#9c27b0" }
       ]
-    }
-    HttpEngine.request.mockResolvedValue(listData)
-
-    await device.reloadReactNative();
+    };
+    HttpEngine.mockImplementation(() => {
+      return {
+        request: () => listData
+      };
+    });
   });
+
+  beforeEach(async () => await device.reloadReactNative());
 
   afterEach(() => HttpEngine.mockClear());
 
@@ -22,8 +27,8 @@ describe("HomeScreen", () => {
   // });
 
   test("should show detail screen after tap", async () => {
-    await element(by.text("Wine")).tap(); //这里会切到另一页, 但没事, Detox会等待另一页出现的
-    await expect(element(by.text("#8e24aa"))).toBeVisible();
+    await element(by.text("Onion")).tap(); //这里会切到另一页, 但没事, Detox会等待另一页出现的
+    await expect(element(by.text("#9c27b0"))).toBeVisible();
   });
 
   // test("should swipe then tap", async () => {
