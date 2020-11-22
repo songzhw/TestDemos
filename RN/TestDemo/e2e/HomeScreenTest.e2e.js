@@ -13,7 +13,7 @@ describe("HomeScreen", () => {
     };
     HttpEngine.mockImplementation(() => {
       return {
-        request: () => listData
+        request: async (url) => listData
       };
     });
   });
