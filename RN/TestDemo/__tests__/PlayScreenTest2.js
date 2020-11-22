@@ -16,20 +16,11 @@ describe("mock2B", () => {
   // 不清除的话, SoundPlayer.mock会越来越大
   afterEach(() => SoundPlayer.mockClear());
 
-  // test("check constructor be called", () => {
-  //   const page = new PlayScreen();
-  //   expect(SoundPlayer).toHaveBeenCalledTimes(1);
-  // });
+  test("check constructor be called", () => {
+    const page = new PlayScreen();
+    expect(SoundPlayer).toHaveBeenCalledTimes(1);
+  });
 
-  /*
-  SoundPlayer.mock长这样:
-      mock =  {
-        calls: [ [] ],
-        instances: [ SoundPlayer { play: [Function] } ],
-        invocationCallOrder: [ 2 ],
-        results: [ { type: 'return', value: undefined } ]
-      }
-   */
   test("check method called", () => {
     const page = new PlayScreen();
     page.onPlayPressed();

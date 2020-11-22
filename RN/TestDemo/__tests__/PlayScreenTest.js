@@ -3,7 +3,6 @@ import { PlayScreen } from "../src/unitest/mock2/PlayScreen";
 
 jest.mock("../src/unitest/mock2/SoundPlayer");
 
-
 describe("mock2", () => {
 
   // 不清除的话, SoundPlayer.mock会越来越大
