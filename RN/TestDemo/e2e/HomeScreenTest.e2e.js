@@ -27,6 +27,10 @@ describe("HomeScreen", () => {
   // });
 
   test("should show detail screen after tap", async () => {
+    const http = new HttpEngine();
+    http.request("one")
+      .then(str => console.log("szw http resp = ", str));
+
     await element(by.text("Onion")).tap(); //这里会切到另一页, 但没事, Detox会等待另一页出现的
     await expect(element(by.text("#9c27b0"))).toBeVisible();
   });
