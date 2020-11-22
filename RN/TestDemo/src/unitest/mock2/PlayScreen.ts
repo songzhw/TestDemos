@@ -1,6 +1,6 @@
 import { SoundPlayer } from "./SouldPlayer";
 
-export class PlayerScreen {
+export class PlayScreen {
   player = new SoundPlayer();
 
   onPlayPressed() {
