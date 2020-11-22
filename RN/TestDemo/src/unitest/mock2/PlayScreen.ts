@@ -1,4 +1,4 @@
-import { SoundPlayer } from "./SouldPlayer";
+import { SoundPlayer } from "./SoundPlayer";
 
 export class PlayScreen {
   player = new SoundPlayer();
