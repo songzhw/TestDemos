@@ -1,5 +1,5 @@
 export class HttpEngine {
-  async request(url) {
+  async request(url: string) {
     const listData = {
       succ: true,
       payload: [

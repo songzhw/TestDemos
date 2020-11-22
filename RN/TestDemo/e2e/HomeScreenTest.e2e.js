@@ -4,26 +4,7 @@ jest.mock("../src/core/HttpEngine");
 
 describe("HomeScreen", () => {
 
-  beforeAll(() => {
-    const listData = {
-      succ: true,
-      payload: [
-        { id: "001as0d", title: "Onion", category: "grocery", isDone: false, color: "#9c27b0" }
-      ]
-    };
-    HttpEngine.mockImplementation(() => {
-      return {
-        request: async (url) => listData
-      };
-    });
-    console.log(`szw 001`)
-  });
-
-  beforeEach(async () => {
-    console.log(`szw 002`)
-    await device.reloadReactNative()
-  });
-
+  beforeEach(async () => await device.reloadReactNative());
   afterEach(() => HttpEngine.mockClear());
 
   // test("should have home screen", async () => {
