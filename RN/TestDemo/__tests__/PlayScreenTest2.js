@@ -3,10 +3,12 @@ import { PlayScreen } from "../src/unitest/mock2/PlayScreen";
 
 const mockFn = jest.fn(); //这种情况下, 这的Mock方法名一定要用mock开头!
 jest.mock("../src/unitest/mock2/SoundPlayer", () => {
-  return jest.fn().mockImplementation(() => {
-    return { play: mockFn };
-  });
-});
+  return {
+    SoundPlayer: jest.fn().mockImplementation(() => {
+      return { play: mockFn };
+    })
+  };
+}); //官网上的做法只适用于js. 对于TS, 我们还得加上 {SoundPlayer: **}, 不然会说: "_SoundPlayer.SoundPlayer is not a constructor"
 
 
 describe("mock2B", () => {
@@ -29,11 +31,10 @@ describe("mock2B", () => {
       }
    */
   test("check method called", () => {
-    // const page = new PlayScreen();
-    // page.onPlayPressed();
-    //
-    // expect(fn).toHaveBeenCalledWith("jazz.mp3");
-    console.log(SoundPlayer.mock)
+    const page = new PlayScreen();
+    page.onPlayPressed();
+
+    expect(mockFn).toHaveBeenCalledWith("jazz.mp3");
   });
 
 });
