@@ -1,7 +1,6 @@
 import { SoundPlayer } from "../src/unitest/mock2/SoundPlayer";
 import { PlayScreen } from "../src/unitest/mock2/PlayScreen";
 
-const fn = jest.fn();
 jest.mock("../src/unitest/mock2/SoundPlayer");
 
 
