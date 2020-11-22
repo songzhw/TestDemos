@@ -16,9 +16,13 @@ describe("HomeScreen", () => {
         request: async (url) => listData
       };
     });
+    console.log(`szw 001`)
   });
 
-  beforeEach(async () => await device.reloadReactNative());
+  beforeEach(async () => {
+    console.log(`szw 002`)
+    await device.reloadReactNative()
+  });
 
   afterEach(() => HttpEngine.mockClear());
 
