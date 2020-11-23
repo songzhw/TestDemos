@@ -63,7 +63,7 @@ export const HomeScreen = (props: IProps) => {
     setSearchValue(text);
 
     if (text !== "") {
-      const newListData = fullDataRef.current.filter(item => item.title.includes(text));
+      const newListData = fullDataRef.current.filter(item => item.title.toLowerCase().includes(text.toLowerCase()));
       setListData(newListData);
     } else {
       setListData(fullDataRef.current);
@@ -77,7 +77,7 @@ export const HomeScreen = (props: IProps) => {
   return (
     <SafeAreaView style={styles.root}>
       <TextInput style={styles.search} placeholder="search" value={searchValue}
-                 onChangeText={onChangeText} />
+                 onChangeText={onChangeText} autoCapitalize="none" />
       <FlatList
         testID="homeList"
         data={listData}
