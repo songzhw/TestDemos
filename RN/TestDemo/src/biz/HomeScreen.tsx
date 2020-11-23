@@ -1,5 +1,5 @@
 import React, { useEffect, useLayoutEffect, useState } from "react";
-import { View, ViewProps, Text, StyleSheet, SafeAreaView, FlatList, ListRenderItemInfo } from "react-native";
+import { View, ViewProps, Text, StyleSheet, SafeAreaView, FlatList, ListRenderItemInfo, TextInput } from "react-native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { StackParamList } from "../../App";
 import { Button } from "../ui/Button";
@@ -17,6 +17,7 @@ export const HomeScreen = (props: IProps) => {
   const http = new HttpEngine();
   const [listData, setListData] = useState<ITodoItem[]>([]);
   const [dialogVisible, setDialogVisible] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
 
   useEffect(() => {
     http.request("https://run.mocky.io/v3/0002d9dc-ddbd-4947-8306-33f6d70e17fb")
@@ -48,10 +49,21 @@ export const HomeScreen = (props: IProps) => {
     setDialogVisible(false);
   };
 
-  const onCloseDialog = ()=>{
-    setDialogVisible(false)
-  }
+  const onCloseDialog = () => {
+    setDialogVisible(false);
+  };
 
+  const onChangeText = (text: string) => {
+    console.log(`szw text = `, text);
+    setSearchValue(text);
+
+    if (text !== "") {
+      const newListData = listData.filter(item => item.title.includes(text));
+      setListData(newListData);
+    } else {
+      console.log(`szw text empty`);
+    }
+  };
 
   const renderItem = (item: ListRenderItemInfo<ITodoItem>) => (
     <TodoItem datum={item.item} navigation={props.navigation} />
@@ -59,6 +71,8 @@ export const HomeScreen = (props: IProps) => {
 
   return (
     <SafeAreaView style={styles.root}>
+      <TextInput style={styles.search} placeholder="search" value={searchValue}
+                 onChangeText={onChangeText} />
       <FlatList
         testID="homeList"
         data={listData}
@@ -66,7 +80,7 @@ export const HomeScreen = (props: IProps) => {
         keyExtractor={item => item.id}
       />
 
-      <AddTodoItemDialog isVisible={dialogVisible} onAddItem={onAddItem} onCloseDialog={onCloseDialog}/>
+      <AddTodoItemDialog isVisible={dialogVisible} onAddItem={onAddItem} onCloseDialog={onCloseDialog} />
     </SafeAreaView>
   );
 };
@@ -74,5 +88,6 @@ export const HomeScreen = (props: IProps) => {
 
 const styles = StyleSheet.create({
   root: { flex: 1 },
+  search: { height: 40, backgroundColor: "white", fontSize: 22 },
   btnAdd: { fontSize: 25, width: 40, textAlign: "center" }
 });
