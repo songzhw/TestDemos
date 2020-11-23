@@ -1,11 +1,10 @@
 import { HttpEngine } from "../src/core/HttpEngine";
 
-jest.mock("../src/core/HttpEngine");
+// jest.mock("../src/core/HttpEngine"); //Detox中的mock比单元测试的mock, 要复杂鑫了, 这个不行的
 
 describe("HomeScreen", () => {
 
   beforeEach(async () => await device.reloadReactNative());
-  afterEach(() => HttpEngine.mockClear());
 
   test("should have home screen", async () => {
     await expect(element(by.text("Honey"))).toBeVisible();
