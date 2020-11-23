@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { View, ViewProps, Text, StyleSheet, SafeAreaView, FlatList, ListRenderItemInfo, TextInput } from "react-native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { StackParamList } from "../../App";
@@ -15,13 +15,17 @@ interface IProps extends ViewProps {
 
 export const HomeScreen = (props: IProps) => {
   const http = new HttpEngine();
+  const fullDataRef = useRef<ITodoItem[]>([]);
   const [listData, setListData] = useState<ITodoItem[]>([]);
   const [dialogVisible, setDialogVisible] = useState(false);
   const [searchValue, setSearchValue] = useState("");
 
   useEffect(() => {
     http.request("https://run.mocky.io/v3/0002d9dc-ddbd-4947-8306-33f6d70e17fb")
-      .then(resp => setListData(resp.payload));
+      .then(resp => {
+        setListData(resp.payload);
+        fullDataRef.current = resp.payload;
+      });
   }, []);
 
   useLayoutEffect(() => {
@@ -46,6 +50,7 @@ export const HomeScreen = (props: IProps) => {
 
     listData.push(newItem);
     setListData(listData);
+    fullDataRef.current = listData;
     setDialogVisible(false);
   };
 
@@ -58,10 +63,10 @@ export const HomeScreen = (props: IProps) => {
     setSearchValue(text);
 
     if (text !== "") {
-      const newListData = listData.filter(item => item.title.includes(text));
+      const newListData = fullDataRef.current.filter(item => item.title.includes(text));
       setListData(newListData);
     } else {
-      console.log(`szw text empty`);
+      setListData(fullDataRef.current);
     }
   };
 
