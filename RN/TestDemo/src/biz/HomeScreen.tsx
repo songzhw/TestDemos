@@ -76,7 +76,7 @@ export const HomeScreen = (props: IProps) => {
   return (
     <SafeAreaView style={styles.root}>
       <TextInput style={styles.search} placeholder="search" value={searchValue}
-                 onChangeText={onChangeText} autoCapitalize="none" />
+                 onChangeText={onChangeText} autoCapitalize="none" testID="searchBar"/>
       <FlatList
         testID="homeList"
         data={listData}

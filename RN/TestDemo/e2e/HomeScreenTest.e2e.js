@@ -16,6 +16,11 @@ describe("HomeScreen", () => {
     await expect(element(by.text("#8e24aa"))).toBeVisible();
   });
 
+  test("add button", async () => {
+    await element(by.id("btnAdd")).tap();
+    await expect(element(by.text("Add Todo Item"))).toBeVisible();
+  });
+
   test("should swipe then tap", async () => {
     await waitFor(element(by.text("Bacon")))
       .toBeVisible()
@@ -25,9 +30,10 @@ describe("HomeScreen", () => {
     await expect(element(by.text("#4a148c"))).toBeVisible();
   });
 
-  test("add button", async () => {
-    await element(by.id("btnAdd")).tap();
-    await expect(element(by.text("Add Todo Item"))).toBeVisible();
-  });
+  test("should change data on search", async ()=>{
+    await element(by.id("searchBar")).typeText("Honey");
+    await expect(element(by.text("Cheese"))).toNotExist()
+    await expect(element(by.text("Honey Crisp"))).toBeVisible()
+  })
 
 });
