@@ -59,7 +59,6 @@ export const HomeScreen = (props: IProps) => {
   };
 
   const onChangeText = (text: string) => {
-    console.log(`szw text = `, text);
     setSearchValue(text);
 
     if (text !== "") {
