@@ -31,7 +31,11 @@ export const HomeScreen = (props: IProps) => {
   useLayoutEffect(() => {
     props.navigation.setOptions(({
       headerRight: () => (
-        <Button onClick={onAddItemButtonPressed} text="+" textStyle={styles.btnAdd} testID="btnAdd" />
+        <View style={{ flex:1, flexDirection: "row" }}>
+          <Button onClick={onAddItemButtonPressed} text="+" textStyle={styles.btnAdd} testID="btnAdd" />
+          {/* 这个"&#8921;"就是">>>"的字样 */}
+          <Button onClick={onShowCaseButtonPressed} text="&#8921;" textStyle={styles.btnAdd} testID="btnShowcase" />
+        </View>
       )
     }));
   });
@@ -39,6 +43,10 @@ export const HomeScreen = (props: IProps) => {
   const onAddItemButtonPressed = () => {
     setDialogVisible(true);
   };
+
+  const onShowCaseButtonPressed = ()=>{
+    props.navigation.navigate("showcase")
+  }
 
   const onAddItem = (text: string) => {
     const newItem: ITodoItem = {
@@ -76,7 +84,7 @@ export const HomeScreen = (props: IProps) => {
   return (
     <SafeAreaView style={styles.root}>
       <TextInput style={styles.search} placeholder="search" value={searchValue}
-                 onChangeText={onChangeText} autoCapitalize="none" testID="searchBar"/>
+                 onChangeText={onChangeText} autoCapitalize="none" testID="searchBar" />
       <FlatList
         testID="homeList"
         data={listData}

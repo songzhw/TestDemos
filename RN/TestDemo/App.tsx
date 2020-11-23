@@ -1,28 +1,15 @@
 import React from "react";
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar
-} from "react-native";
-
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions
-} from "react-native/Libraries/NewAppScreen";
-import { HomeScreen, ITodoItem } from "./src/biz/HomeScreen";
+import { HomeScreen } from "./src/biz/HomeScreen";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 import { DetailScreen } from "./src/biz/DetailScreen";
+import { ShowcaseScreen } from "./src/biz/ShowcaseScreen";
+import { ITodoItem } from "./src/biz/TodoItem";
 
 export type StackParamList = {
   home: undefined;
   detail: { datum: ITodoItem };
+  showcase: undefined;
 }
 
 const Stack = createStackNavigator();
@@ -33,6 +20,7 @@ const App = () => {
       <Stack.Navigator>
         <Stack.Screen name="home" component={HomeScreen} />
         <Stack.Screen name="detail" component={DetailScreen} />
+        <Stack.Screen name="showcase" component={ShowcaseScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
