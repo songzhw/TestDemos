@@ -11,13 +11,13 @@ export const ShowcaseScreen = (props: IProps) => {
     <View style={styles.root}>
       <ViewPager style={styles.viewpager}>
         <View key={"1"}>
-          <Text style={{ backgroundColor: "red", flex: 1 }}> First Page</Text>
+          <Text style={{ backgroundColor: "red", flex: 1 }}>First Page</Text>
         </View>
         <View key={"2"}>
-          <Text style={{ backgroundColor: "blue", flex: 1 }}> Second Page</Text>
+          <Text style={{ backgroundColor: "blue", flex: 1 }}>Second Page</Text>
         </View>
         <View key={"3"}>
-          <Text style={{ backgroundColor: "green", flex: 1 }}> Third Page</Text>
+          <Text style={{ backgroundColor: "green", flex: 1 }}>Third Page</Text>
         </View>
       </ViewPager>
     </View>
