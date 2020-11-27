@@ -3,10 +3,13 @@ export const html = `
 <html lang="en">
 <head>
   <script>
+    function resetText(){
+      let h1 = document.getElementById("title");
+      h1.innerHTML = "(default)";
+    }
     function changeText(text) {
-      var h1 = document.getElementById("title");
+      let h1 = document.getElementById("title");
       h1.innerHTML = text;
-      return true;
     }
   </script>
 </head>
