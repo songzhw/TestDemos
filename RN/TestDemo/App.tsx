@@ -6,8 +6,6 @@ import { DetailScreen } from "./src/biz/DetailScreen";
 import { ShowcaseScreen } from "./src/biz/ShowcaseScreen";
 import { ITodoItem } from "./src/biz/TodoItem";
 import { SomeWeb } from "./src/core/ScreenInjector";
-// @ts-ignore
-import { IS_E2E } from "@env";
 
 export type StackParamList = {
   home: undefined;
@@ -17,7 +15,6 @@ export type StackParamList = {
 }
 
 const Stack = createStackNavigator();
-console.log(`e2e = `, IS_E2E, "; someweb = ", SomeWeb)
 
 const App = () => {
   return (
