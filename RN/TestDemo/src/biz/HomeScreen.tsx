@@ -6,7 +6,7 @@ import { Button } from "../ui/Button";
 import { HttpEngine } from "../core/HttpEngine";
 import { ITodoItem, TodoItem } from "./TodoItem";
 import { AddTodoItemDialog } from "./AddTodoItemDialog";
-import { IS_E2E } from "@env";
+
 
 export type HomeNavProp = StackNavigationProp<StackParamList, "home">
 
@@ -20,8 +20,6 @@ export const HomeScreen = (props: IProps) => {
   const [listData, setListData] = useState<ITodoItem[]>([]);
   const [dialogVisible, setDialogVisible] = useState(false);
   const [searchValue, setSearchValue] = useState("");
-
-  console.log(`szw e2e = `, IS_E2E)
 
   useEffect(() => {
     http.request("https://run.mocky.io/v3/0002d9dc-ddbd-4947-8306-33f6d70e17fb")

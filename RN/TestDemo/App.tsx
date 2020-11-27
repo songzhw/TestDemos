@@ -5,7 +5,9 @@ import { NavigationContainer } from "@react-navigation/native";
 import { DetailScreen } from "./src/biz/DetailScreen";
 import { ShowcaseScreen } from "./src/biz/ShowcaseScreen";
 import { ITodoItem } from "./src/biz/TodoItem";
-import { SomeWebContentScreen } from "./src/biz/webview/SomeWebContentScreen";
+import { SomeWeb } from "./src/core/ScreenInjector";
+// @ts-ignore
+import { IS_E2E } from "@env";
 
 export type StackParamList = {
   home: undefined;
@@ -15,6 +17,7 @@ export type StackParamList = {
 }
 
 const Stack = createStackNavigator();
+console.log(`e2e = `, IS_E2E, "; someweb = ", SomeWeb)
 
 const App = () => {
   return (
@@ -23,7 +26,7 @@ const App = () => {
         <Stack.Screen name="home" component={HomeScreen} />
         <Stack.Screen name="detail" component={DetailScreen} />
         <Stack.Screen name="showcase" component={ShowcaseScreen} />
-        <Stack.Screen name="someweb" component={SomeWebContentScreen} />
+        <Stack.Screen name="someweb" component={SomeWeb} />
       </Stack.Navigator>
     </NavigationContainer>
   );
