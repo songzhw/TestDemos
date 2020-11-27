@@ -6,6 +6,7 @@ export const html = `
     function changeText(text) {
       var h1 = document.getElementById("title");
       h1.innerHTML = text;
+      return true;
     }
   </script>
 </head>

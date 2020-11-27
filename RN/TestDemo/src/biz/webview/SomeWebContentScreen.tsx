@@ -12,7 +12,7 @@ export const SomeWebContentScreen = (props: IProps) => {
 
   const inject1 = () => {
     let text = "hello"
-    webviewRef.current?.injectJavaScript("changeText("+text+")");
+    webviewRef.current?.injectJavaScript(`changeText(${text})`);
   };
 
   return (
