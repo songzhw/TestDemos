@@ -3,9 +3,9 @@ export const html = `
 <html lang="en">
 <head>
   <script>
-    function changeText() {
+    function changeText(text) {
       var h1 = document.getElementById("title");
-      h1.innerHTML = "second";
+      h1.innerHTML = text;
     }
   </script>
 </head>
