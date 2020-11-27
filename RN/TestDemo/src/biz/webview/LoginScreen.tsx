@@ -6,10 +6,15 @@ interface IProps extends ViewProps {
 }
 
 export const LoginScreen = (props: IProps) => {
+  const html = `
+<html>
+  <h1>hello</h1>
+</html>  
+  `;
 
   return (
     <WebView
-      source={{uri:"https://www.google.ca"}}
+      source={{ html }}
     />
   );
 };
