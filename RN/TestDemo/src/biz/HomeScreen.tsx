@@ -31,10 +31,11 @@ export const HomeScreen = (props: IProps) => {
   useLayoutEffect(() => {
     props.navigation.setOptions(({
       headerRight: () => (
-        <View style={{ flex:1, flexDirection: "row" }}>
+        <View style={{ flex: 1, flexDirection: "row", marginRight: 10 }}>
           <Button onClick={onAddItemButtonPressed} text="+" textStyle={styles.btnAdd} testID="btnAdd" />
           {/* 这个"&#8921;"就是">>>"的字样 */}
           <Button onClick={onShowCaseButtonPressed} text="&#8921;" textStyle={styles.btnAdd} testID="btnShowcase" />
+          <Button onClick={onLogin} text="登录" textStyle={styles.btnAdd} testID="btnLogin" />
         </View>
       )
     }));
@@ -44,9 +45,13 @@ export const HomeScreen = (props: IProps) => {
     setDialogVisible(true);
   };
 
-  const onShowCaseButtonPressed = ()=>{
-    props.navigation.navigate("showcase")
-  }
+  const onShowCaseButtonPressed = () => {
+    props.navigation.navigate("showcase");
+  };
+
+  const onLogin = () => {
+    props.navigation.navigate("login");
+  };
 
   const onAddItem = (text: string) => {
     const newItem: ITodoItem = {
