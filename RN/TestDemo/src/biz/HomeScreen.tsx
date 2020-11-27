@@ -35,7 +35,7 @@ export const HomeScreen = (props: IProps) => {
           <Button onClick={onAddItemButtonPressed} text="+" textStyle={styles.btnAdd} testID="btnAdd" />
           {/* 这个"&#8921;"就是">>>"的字样 */}
           <Button onClick={onShowCaseButtonPressed} text="&#8921;" textStyle={styles.btnAdd} testID="btnShowcase" />
-          <Button onClick={onLogin} text="登录" textStyle={styles.btnAdd} testID="btnLogin" />
+          <Button onClick={onLogin} text="网" textStyle={styles.btnAdd} testID="btnLogin" />
         </View>
       )
     }));
@@ -50,7 +50,7 @@ export const HomeScreen = (props: IProps) => {
   };
 
   const onLogin = () => {
-    props.navigation.navigate("login");
+    props.navigation.navigate("someweb");
   };
 
   const onAddItem = (text: string) => {

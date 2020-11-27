@@ -5,13 +5,13 @@ import { NavigationContainer } from "@react-navigation/native";
 import { DetailScreen } from "./src/biz/DetailScreen";
 import { ShowcaseScreen } from "./src/biz/ShowcaseScreen";
 import { ITodoItem } from "./src/biz/TodoItem";
-import { LoginScreen } from "./src/biz/webview/LoginScreen";
+import { SomeWebContentScreen } from "./src/biz/webview/SomeWebContentScreen";
 
 export type StackParamList = {
   home: undefined;
   detail: { datum: ITodoItem };
   showcase: undefined;
-  login: undefined;
+  someweb: undefined;
 }
 
 const Stack = createStackNavigator();
@@ -23,7 +23,7 @@ const App = () => {
         <Stack.Screen name="home" component={HomeScreen} />
         <Stack.Screen name="detail" component={DetailScreen} />
         <Stack.Screen name="showcase" component={ShowcaseScreen} />
-        <Stack.Screen name="login" component={LoginScreen} />
+        <Stack.Screen name="someweb" component={SomeWebContentScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
