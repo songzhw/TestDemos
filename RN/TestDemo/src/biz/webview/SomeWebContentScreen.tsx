@@ -1,5 +1,5 @@
-import React, { useRef } from "react";
-import { View, ViewProps, Text, StyleSheet, SafeAreaView } from "react-native";
+import React, { useRef, useState } from "react";
+import { View, ViewProps, Text, StyleSheet, SafeAreaView, TextInput, TouchableOpacity } from "react-native";
 import WebView from "react-native-webview";
 import { html } from "./LocalHtml";
 import { Button } from "../../ui/Button";
@@ -20,10 +20,18 @@ export const SomeWebContentScreen = (props: IProps) => {
     webviewRef.current?.injectJavaScript(`changeText("${text}")`);
   };
 
+  const [script, setScript] = useState("");
+  const onButtonPress = () => {
+  };
+
   return (
     <SafeAreaView style={styles.root}>
       <Button style={styles.button} onClick={inject1} text={"inject1"} textStyle={{ fontSize: 20 }} />
       <Button style={styles.button} onClick={inject2} text={"inject2"} textStyle={{ fontSize: 20 }} />
+      <Text style={styles.invisible}></Text>
+      <TextInput style={styles.invisible} onChangeText={setScript} value={script} />
+      <TouchableOpacity style={styles.invisible} onPress={onButtonPress} />
+
       <WebView ref={webviewRef} source={{ html: html }} />
     </SafeAreaView>
   );
@@ -32,5 +40,6 @@ export const SomeWebContentScreen = (props: IProps) => {
 
 const styles = StyleSheet.create({
   root: { flex: 1 },
-  button: { height: 30 }
+  button: { height: 30 },
+  invisible: { height: 0 }
 });

@@ -1,11 +1,7 @@
-import React from "react";
-// @ts-ignore
-import { IS_E2E } from "@env";
+import React, { ComponentType } from "react";
 import { SomeWebContentScreen } from "../biz/webview/SomeWebContentScreen";
-import { buildFakeWeb, FakeWebHoc } from "../e2e/FakeWebHoc";
 
-const web = <SomeWebContentScreen />;
+export const SomeWeb = SomeWebContentScreen;
+// IS_E2E ?
+// buildFakeWeb(SomeWebContentScreen)() :
 
-export const SomeWeb = IS_E2E ?
-  <FakeWebHoc> {web} </FakeWebHoc> :
-  web;
