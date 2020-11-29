@@ -8,6 +8,7 @@ describe("SomeWebContent", () => {
   // });
 
   test("reset text by invisible input", async () => {
+    await element(by.text("网")).tap();
     await element(by.id("inviInput")).typeText("resetText()");
     await element(by.id("inviButton")).tap();
     await expect(element(by.text("(default)"))).toBeVisible();
