@@ -22,15 +22,17 @@ export const SomeWebContentScreen = (props: IProps) => {
 
   const [script, setScript] = useState("");
   const onButtonPress = () => {
+    webviewRef.current?.injectJavaScript(script);
   };
 
   return (
     <SafeAreaView style={styles.root}>
       <Button style={styles.button} onClick={inject1} text={"inject1"} textStyle={{ fontSize: 20 }} />
       <Button style={styles.button} onClick={inject2} text={"inject2"} textStyle={{ fontSize: 20 }} />
-      <Text style={styles.invisible}></Text>
-      <TextInput style={styles.invisible} onChangeText={setScript} value={script} />
-      <TouchableOpacity style={styles.invisible} onPress={onButtonPress} />
+
+      <Text testID="inviLabel" style={styles.invisible}></Text>
+      <TextInput testID="inviInput" style={styles.invisible} onChangeText={setScript} value={script} />
+      <TouchableOpacity testID="inviButton" style={styles.invisible} onPress={onButtonPress} />
 
       <WebView ref={webviewRef} source={{ html: html }} />
     </SafeAreaView>
@@ -41,5 +43,5 @@ export const SomeWebContentScreen = (props: IProps) => {
 const styles = StyleSheet.create({
   root: { flex: 1 },
   button: { height: 30 },
-  invisible: { height: 0 }
+  invisible: { height: 1 }
 });
