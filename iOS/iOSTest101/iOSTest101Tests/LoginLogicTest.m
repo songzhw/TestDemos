@@ -2,6 +2,10 @@
 #import "LoginLogic.h"
 #import "HttpEngine.h"
 
+// 1. 当然, 面向protocol编程, 也能写出一个mock并替代. 但有点麻烦, 每个类都要自己写个接口来抽象
+
+// 2. 第二个办法就是下面的MockHttp, 主要是利用了Objc的鸭子类型的特性. 
+
 @interface MockHttp: NSObject
 -(NSString*) requestWithUrl: (NSString*) url;
 @end
@@ -20,7 +24,7 @@
 
 - (void)testHttp {
   LoginLogic* biz = [LoginLogic new];
-  biz.http = [MockHttp new];
+  biz.http = [MockHttp new]; //类型不对, 这里会报warning. 但因为是鸭子类型,不影响我们build的
   NSString* resp = [biz loginWithName:@"" pwd:@""];
   XCTAssertEqualObjects(@"szw2020", resp);
 }

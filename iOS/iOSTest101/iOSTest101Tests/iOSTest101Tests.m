@@ -1,5 +1,3 @@
-//
-
 #import <XCTest/XCTest.h>
 
 @interface iOSTest101Tests : XCTestCase
