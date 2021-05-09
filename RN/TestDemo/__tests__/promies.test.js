@@ -18,4 +18,17 @@ describe("promise test", () => {
     return expect(tryDoIt(3)).rejects.toMatch("only even");
   });
 
+  test("promise4", async () => {
+    const data = await tryDoIt(4);
+    expect(data).toBe(8);
+  });
+
+  test("promise5", async () => {
+    try {
+      tryDoIt(3);
+    } catch (e) {
+      expect(e).toMatch("only even");
+    }
+  });
+
 });
