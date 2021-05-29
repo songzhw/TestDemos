@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "react-bootstrap";
-import { SundaesOptions } from "./SundaesOptions";
+import { SundaesOptionsView } from "./SundaesOptionsView";
 
 interface IProps {
 }
@@ -14,8 +14,8 @@ export const OrderEntry = (props: IProps) => {
   return (
     <div>
       <h1>Design Your Sundae!</h1>
-      <SundaesOptions type="scoops"/>
-      {/*<SundaesOptions type="toppings"/>*/}
+      <SundaesOptionsView type="scoops"/>
+      {/*<SundaesOptionsView type="toppings"/>*/}
       <h2> Grand total: </h2>
       <Button disabled={true} onClick={onSetOrder}>Order Sundae</Button>
     </div>
