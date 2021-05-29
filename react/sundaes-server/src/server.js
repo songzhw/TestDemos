@@ -4,9 +4,10 @@ const fs = require('fs');
 
 const app = express();
 
-// CORS for react app, assuming port 3000
+// CORS for react app. React本地运行的商品是3000.
+// 注意这里不要用3030, 会有错误, 说CROS不通过
 app.use(cors({
-  origin: 'http://localhost:3030',
+  origin: 'http://localhost:3000',
   credentials: true
 }))
 
