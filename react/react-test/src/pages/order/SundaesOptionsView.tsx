@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { SundaeOption } from "./SundaesOption";
+import { formatCurrency } from "../../utils/Utils";
 
 interface IProps {
   type: "scoops" | "toppings";
@@ -20,10 +21,12 @@ export const SundaesOptionsView = ({ type }: IProps) => {
     return <h1>error</h1>;
   }
 
-  return (
-    <div>
 
-    </div>
+  return (
+    <>
+      <h2>{type.toUpperCase()}</h2>
+      <p>{formatCurrency(2)}</p>
+    </>
   );
 }
 ;
