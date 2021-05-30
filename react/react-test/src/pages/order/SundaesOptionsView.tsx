@@ -31,6 +31,9 @@ export const SundaesOptionsView = ({ type }: IProps) => {
         key={item.name}
         name={item.name}
         imagePath={item.imagePath}
+        onUpdateCount={(itemName, newCount) => {
+          console.log(``);
+        }}
       />
     ));
 
