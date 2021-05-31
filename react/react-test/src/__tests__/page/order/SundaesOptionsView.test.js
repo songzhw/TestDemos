@@ -2,11 +2,10 @@ import { SundaesOptionsView } from "../../../pages/order/SundaesOptionsView";
 import { render, screen } from "@testing-library/react";
 
 describe("SundaesOptionsView", () => {
-  test("", () => {
+  test("", async () => {
     const { debug } = render(<SundaesOptionsView type={"scoops"} />);
+    const images = await screen.findAllByRole("img");
     debug();
-
-    const images = screen.getAllByRole("img");
     expect(images).toHaveLength(2);
   });
 });
