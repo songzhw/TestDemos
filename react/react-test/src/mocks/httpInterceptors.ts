@@ -1,11 +1,18 @@
 // 处理哪种api, 是rest还是graphql, 这就是"rest"引入的原因.
-import { setupWorker, rest } from "msw";
+import { rest } from "msw";
+import { setupServer } from "msw/node";
 
 const api1 = rest.get("http://localhost:3030/scoops", (req, resp, ctx) => {
-
+  return resp(ctx.json([
+    { "name": "doujiang", "imagePath": "/images/dou.png" },
+    { "name": "youtiao", "imagePath": "/images/tiao.png" }
+  ]));
 });
 const api2 = rest.get("http://localhost:3030/toppings", (req, resp, ctx) => {
-
+  return resp(ctx.json([
+    { "name": "A", "imagePath": "/images/a.png" },
+    { "name": "B", "imagePath": "/images/b.png" }
+  ]));
 });
-const interceptor = setupWorker(api1, api2);
-interceptor.start();
+
+export const mockServer = setupServer(api1, api2);
