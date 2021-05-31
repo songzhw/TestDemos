@@ -9,7 +9,8 @@ interface IProps {
 
 export const ScoopsOptions = ({ imagePath, name, onUpdateCount }: IProps) => {
   const onCountChange = (event: any) => {
-
+    const count = event.target.value;
+    onUpdateCount(name, count);
   };
 
   return (
