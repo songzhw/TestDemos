@@ -1,10 +1,12 @@
-import React from 'react';
-import {SummaryForm} from "./pages/summary/SummaryForm";
+import React from "react";
 import { OrderEntry } from "./pages/order/OrderEntry";
+import { OrderContext } from "./utils/OrderContext";
 
 function App() {
   return (
-    <OrderEntry/>
+    <OrderContext.Provider value={"ctx2"}>
+      <OrderEntry />
+    </OrderContext.Provider>
   );
 }
 

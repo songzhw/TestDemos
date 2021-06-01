@@ -13,7 +13,7 @@ export const OrderEntry = (props: IProps) => {
 
   return (
     <div>
-      <h1>Design Your Sundae!</h1>
+      <h1 data-testid="entryH1">Design Your Sundae!</h1>
       <SundaesOptionsView type="scoops"/>
       <SundaesOptionsView type="toppings"/>
       <h2> Grand total: </h2>
