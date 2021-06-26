@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Col, Form } from "react-bootstrap";
-import { FnContext, OrderContext } from "../../utils/OrderContext";
+import { OrderContext } from "../../utils/OrderContext";
 
 interface IProps {
   name: string;
@@ -14,12 +14,10 @@ export const ScoopsOptions = ({ imagePath, name, onUpdateCount }: IProps) => {
     onUpdateCount(name, count);
   };
 
-  const contextValue = useContext(OrderContext);
-  console.log(`szw contextValue = `, contextValue);
-  const contextFn = useContext(FnContext);
-  // @ts-ignore (因为不认识这是个function)
-  contextFn();
-  console.log(`szw contextFn = `, contextFn);
+  // @ts-ignore
+  const [value, fn] = useContext(OrderContext);
+  console.log(`szw contextValue = `, value);
+  fn();
 
   return (
     <Col xs={12} sm={6} md={4} lg={3} style={{ textAlign: "center" }}>
