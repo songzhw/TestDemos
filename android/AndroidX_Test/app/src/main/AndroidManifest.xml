@@ -12,7 +12,8 @@
 
         <activity
             android:name=".biz.splash.SplashActivity"
-            android:theme="@style/FullScreenAppcompatTheme">
+            android:theme="@style/FullScreenAppcompatTheme"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -24,7 +25,8 @@
         <activity android:name=".biz.items.ItemsActivity" />
         <activity android:name=".biz.itemdetail.ItemDetailsActivity" />
 
-        <activity android:name=".core.router.DeepLinkActivity" android:exported="true">
+        <activity android:name=".core.router.DeepLinkActivity"
+            android:launchMode="singleTask" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
