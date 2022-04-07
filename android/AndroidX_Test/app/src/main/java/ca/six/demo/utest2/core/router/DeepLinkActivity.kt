@@ -28,7 +28,7 @@ class DeepLinkActivity : AppCompatActivity() {
         val host = uri?.host ?: ""
         println("szw host = $host")
 
-        // ./testDeepLink.sh "six://detail?name=apple"
+        // ./testDeepLink.sh "six://items"
         if ("items".equals(host, true)) {
             nav<ItemsActivity>()
         }

@@ -15,6 +15,7 @@ class ItemDetailsActivity : AppCompatActivity(R.layout.activity_item_detail) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setTitle("Details")
 
         val name = intent.getStringExtra("name")
         val image = intent.getStringExtra("img")

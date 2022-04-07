@@ -27,6 +27,8 @@ class ItemsActivity : AppCompatActivity(R.layout.activity_items) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setTitle("Items")
+
         vm = ViewModelProvider(this).get(ItemsViewModel::class.java)
 
         lifecycleScope.launch {
