@@ -32,12 +32,12 @@ class DeepLinkActivityTest {
         val it = getIntent("six://detail")
         activityRule.launchActivity(it)
 
-        onView(withText("Details"))
+        onView(withText("<empty>"))
             .check(matches(isDisplayed()))
     }
 
     @Test fun testDetailsDeeplink_detailsPageShouldShowApple_whenNameIsApple(){
-        val it = getIntent(""" six://detail?name="apple" """)
+        val it = getIntent("six://detail?name=apple")
         activityRule.launchActivity(it)
 
         onView(withText("apple"))
