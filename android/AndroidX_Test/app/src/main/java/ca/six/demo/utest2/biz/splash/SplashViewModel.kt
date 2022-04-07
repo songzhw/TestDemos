@@ -1,38 +1,15 @@
 package ca.six.demo.utest2.biz.splash
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.*
-import ca.six.demo.utest2.R
-import ca.six.demo.utest2.biz.home.HomeActivity
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import ca.six.demo.utest2.core.arch.Event
 import ca.six.demo.utest2.core.http.HttpEngine
-import ca.six.demo.utest2.utils.nav
 import ca.six.demo.utest2.core.test.EspressoIdlingResource
-import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.activity_splash.*
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class SplashActivity : AppCompatActivity() {
-    lateinit var vm: SplashViewModel
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash)
-
-        vm = ViewModelProvider(this).get(SplashViewModel::class.java)
-        vm.start()
-
-        vm.imageLive.observe(this,
-            Observer { imgUrl -> Picasso.get().load(imgUrl).into(ivSplashBg) })
-
-        vm.navigationEvent.observe(this,
-            Observer { nav<HomeActivity>(); this.finish(); })
-    }
-
-}
 
 class SplashViewModel(val dispatcher: CoroutineDispatcher = Dispatchers.IO) : ViewModel() {
     val imageLive = MutableLiveData<String>()
@@ -50,7 +27,6 @@ class SplashViewModel(val dispatcher: CoroutineDispatcher = Dispatchers.IO) : Vi
         }
     }
 }
-
 
 /*
 class MyViewModel : ViewModel() {

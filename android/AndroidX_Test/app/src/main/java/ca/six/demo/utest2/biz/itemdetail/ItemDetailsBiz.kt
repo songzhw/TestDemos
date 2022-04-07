@@ -19,10 +19,14 @@ class ItemDetailsActivity : AppCompatActivity(R.layout.activity_item_detail) {
         val name = intent.getStringExtra("name")
         val image = intent.getStringExtra("img")
 
-        tvItemDetail.text = name
+        tvItemDetail.text = name ?: "<empty>"
 //        imageLoader = ImageLoader()
 //        imageLoader.load(ivItemDetail, image)
-        Picasso.get().load(image).into(ivItemDetail)
+        if(image != null) {
+            Picasso.get().load(image).into(ivItemDetail)
+        } else {
+            ivItemDetail.setImageResource(R.mipmap.ic_launcher_round)
+        }
     }
 }
 
