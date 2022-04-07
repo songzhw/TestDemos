@@ -24,15 +24,23 @@ class DeepLinkActivity : AppCompatActivity() {
 
     // 加上一个参数, 免得此页没有关闭时, 再来一个此页, "intent"的值仍是上一次的intent, 而不是onNewInrtent(it2)中的it2
     private fun onReceiveDeepLink(intention: Intent) {
-        val host = intention.data?.host
+        val uri = intention.data
+        val host = uri?.host ?: ""
         println("szw host = $host")
+
+        // ./testDeepLink.sh "six://detail?name=apple"
         if ("items".equals(host, true)) {
             nav<ItemsActivity>()
-        } else if ("detail".equals(host, true)) {
-            nav<ItemDetailsActivity>(mapOf("name" to "six"))
         }
 
+        // ./testDeepLink.sh "six://detail?name=apple"
+        else if ("detail".equals(host, true)) {
+            val query = uri?.getQueryParameter("name") ?: "<empty>"
+            nav<ItemDetailsActivity>(mapOf("name" to query))
+        }
 
+        // no matter what, this page need to be closed
+        this.finish()
     }
 
 }
