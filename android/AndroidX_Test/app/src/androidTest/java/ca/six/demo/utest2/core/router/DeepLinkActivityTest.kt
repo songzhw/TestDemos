@@ -28,6 +28,21 @@ class DeepLinkActivityTest {
         //+------>AppCompatTextView{id=-1, text=Items, visibility=VISIBLE, width=143, height=76, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=androidx.appcompat.widget.Toolbar$LayoutParams@88c44cc, tag=null, root-is-layout-requested=false, has-input-connection=false, x=45.0, y=41.0,  input-type=0, ime-target=false, has-links=false}
     }
 
+    @Test fun testDetailssDeeplink_detailsPageShouldShow(){
+        val it = getIntent("six://detail")
+        activityRule.launchActivity(it)
+
+        onView(withText("Details"))
+            .check(matches(isDisplayed()))
+    }
+
+    @Test fun testDetailsDeeplink_detailsPageShouldShowApple_whenNameIsApple(){
+        val it = getIntent(""" six://detail?name="apple" """)
+        activityRule.launchActivity(it)
+
+        onView(withText("apple"))
+            .check(matches(isDisplayed()))
+    }
 
     private fun getIntent(uriString: String) = Intent(Intent.ACTION_VIEW, Uri.parse(uriString))
 }
