@@ -2,8 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="ca.six.demo.utest2">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-
     <application
         android:name=".core.MyApp"
         android:icon="@mipmap/ic_launcher"
@@ -22,11 +20,21 @@
         </activity>
 
         <activity android:name=".biz.home.HomeActivity" />
-
         <activity android:name=".temp.RobolectricTestSrcActivity" />
         <activity android:name=".biz.items.ItemsActivity" />
         <activity android:name=".biz.itemdetail.ItemDetailsActivity" />
 
+        <activity android:name=".core.router.DeepLinkActivity" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                 <data android:scheme="six" />
+            </intent-filter>
+        </activity>
+
     </application>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>
