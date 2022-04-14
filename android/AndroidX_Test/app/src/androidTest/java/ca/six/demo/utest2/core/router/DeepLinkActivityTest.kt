@@ -2,14 +2,17 @@ package ca.six.demo.utest2.core.router
 
 import android.content.Intent
 import android.net.Uri
+import androidx.test.core.app.ActivityScenario
+import androidx.test.core.app.launchActivity
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withText
+import androidx.test.ext.junit.rules.ActivityScenarioRule
+import androidx.test.ext.junit.rules.activityScenarioRule //来自"androidx.test.ext:junit-ktx:1.1.3"
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
-import androidx.test.rule.ActivityTestRule
-import org.junit.Assert.*
+import org.junit.After
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -17,11 +20,19 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 @LargeTest
 class DeepLinkActivityTest {
-    @get:Rule val activityRule = ActivityTestRule(DeepLinkActivity::class.java)
+    // 这只适合于Intent是定死的
+    // @get:Rule val rule = activityScenarioRule<DeepLinkActivity>(Intent())
+
+    lateinit var scenario : ActivityScenario<DeepLinkActivity>
+
+    @After
+    fun cleanup(){
+        scenario.close()
+    }
 
     @Test fun testItemsDeeplink_itemsPageShouldShow(){
         val it = getIntent("six://items")
-        activityRule.launchActivity(it)
+        scenario = launchActivity(it)
 
         onView(withText("Items"))
             .check(matches(isDisplayed()))
@@ -30,7 +41,7 @@ class DeepLinkActivityTest {
 
     @Test fun testDetailssDeeplink_detailsPageShouldShow(){
         val it = getIntent("six://detail")
-        activityRule.launchActivity(it)
+        scenario = launchActivity(it)
 
         onView(withText("<empty>"))
             .check(matches(isDisplayed()))
@@ -38,7 +49,7 @@ class DeepLinkActivityTest {
 
     @Test fun testDetailsDeeplink_detailsPageShouldShowApple_whenNameIsApple(){
         val it = getIntent("six://detail?name=apple")
-        activityRule.launchActivity(it)
+        scenario = launchActivity(it)
 
         onView(withText("apple"))
             .check(matches(isDisplayed()))
