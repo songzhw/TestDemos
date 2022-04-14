@@ -13,7 +13,6 @@ import androidx.test.ext.junit.rules.activityScenarioRule //来自"androidx.test
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
 import org.junit.After
-import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -32,7 +31,7 @@ class DeepLinkActivityTest {
 
     @Test fun testItemsDeeplink_itemsPageShouldShow(){
         val it = getIntent("six://items")
-        scenario = launchActivity(it)
+        scenario = launchActivity(it) //没引入"androidx.text:core-ktx:1.3.0"的话, 那使用scenario = ActivityScenario.launch(intent)也行的
 
         onView(withText("Items"))
             .check(matches(isDisplayed()))
