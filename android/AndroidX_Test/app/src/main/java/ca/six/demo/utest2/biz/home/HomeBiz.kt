@@ -1,5 +1,6 @@
 package ca.six.demo.utest2.biz.home
 
+import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
@@ -20,6 +21,18 @@ class HomeActivity : AppCompatActivity(R.layout.activity_home) {
 
         vm = ViewModelProvider(this).get(HomeViewModel::class.java)
 
+        val sp = getSharedPreferences("utest2", Context.MODE_PRIVATE)
+        val spValue = sp.getString("spName", "<empty>")
+        if(spValue != "<empty>") {
+            with(sp.edit()) {
+                putInt("spID", 23)
+                putString("spName", "sp@home")
+                apply()
+            }
+        }
+        tvInfo.text = spValue
+
+
         lifecycleScope.launch {
             val motto = vm.home()
             tvMotto.text = motto
@@ -30,6 +43,7 @@ class HomeActivity : AppCompatActivity(R.layout.activity_home) {
         }
     }
 }
+
 
 class HomeViewModel : ViewModel() {
     var http: HttpEngineWithIO = HttpEngineWithIO()
