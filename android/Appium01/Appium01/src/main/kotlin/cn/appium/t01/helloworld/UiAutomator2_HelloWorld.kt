@@ -1,4 +1,4 @@
-package cn.appium.t01
+package cn.appium.t01.helloworld
 
 import io.appium.java_client.AppiumBy
 import io.appium.java_client.android.AndroidDriver
