@@ -1,0 +1,1 @@
+本app是模拟一个正常Android项目, 其生成的apk会供Appium来测试.
