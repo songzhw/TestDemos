@@ -1,13 +1,16 @@
 package cn.six.appium.and
 
+import android.app.Activity
 import android.os.Bundle
 import android.view.View
+import androidx.core.os.bundleOf
 import androidx.core.view.updateLayoutParams
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import cn.six.appium.and.core.BasePage
 import cn.six.appium.and.databinding.AfHomeBinding
 import cn.six.appium.and.ext.dpToPx
+import cn.six.appium.and.ext.nav
 import cn.six.appium.and.views.rv.adapters.RvViewHolder
 import cn.six.appium.and.views.rv.adapters.builder.BuilderAdapterWrapper
 import cn.six.appium.and.views.rv.adapters.builder.BuilderItem
@@ -21,7 +24,6 @@ class HomePage : BasePage() {
         super.onCreate(savedInstanceState)
         vb = AfHomeBinding.inflate(layoutInflater)
         setContentView(vb.root)
-
         commonAndTitleVerticalLayout(vb.rvHome)
     }
 }
@@ -33,15 +35,15 @@ fun commonAndTitleVerticalLayout(rv: RecyclerView) {
     rv.layoutManager = LinearLayoutManager(context)
     val wrapper = BuilderAdapterWrapper()
     wrapper.add(TitleBuilderItem(TitleDataForGroup(R.mipmap.ic_launcher, "风景")))
-    wrapper.add(ShowcaseItem("hello", R.drawable.ic_apple))
-    wrapper.add(ShowcaseItem("beautiful", R.drawable.ic_banana))
-    wrapper.add(ShowcaseItem("new", R.drawable.ic_cherry))
+    wrapper.add(ShowcaseItem("apple", R.drawable.ic_apple))
+    wrapper.add(ShowcaseItem("banana", R.drawable.ic_banana))
+    wrapper.add(ShowcaseItem("cherry", R.drawable.ic_cherry))
     wrapper.add(TitleBuilderItem(TitleDataForGroup(R.mipmap.ic_launcher, "自然")))
-    wrapper.add(ShowcaseItem("world", R.drawable.ic_durian))
-    wrapper.add(ShowcaseItem("grating", R.drawable.ic_eggplant))
+    wrapper.add(ShowcaseItem("durian", R.drawable.ic_durian))
+    wrapper.add(ShowcaseItem("eggplant", R.drawable.ic_eggplant))
     wrapper.add(TitleBuilderItem(TitleDataForGroup(R.mipmap.ic_launcher, "东瀛")))
-    wrapper.add(ShowcaseItem("sweat fig", R.drawable.ic_fig))
-    wrapper.add(ShowcaseItem("welcome here", R.drawable.ic_grape))
+    wrapper.add(ShowcaseItem("fig", R.drawable.ic_fig))
+    wrapper.add(ShowcaseItem("grape", R.drawable.ic_grape))
     wrapper.add(DividerBuilderItem(100))
     rv.adapter = wrapper.generateAdapter()
 }
@@ -51,6 +53,10 @@ class ShowcaseItem(val title: String, val imageResId: Int): BuilderItem {
     override fun render(vh: RvViewHolder) {
         vh.setSrc(R.id.ivProduct, imageResId)
         vh.setText(R.id.tvInfo, title)
+        vh.rootView<View>().setOnClickListener {
+            val actv = it.context as? Activity ?: return@setOnClickListener
+            actv.nav<DetailPage>(bundleOf("title" to title))
+        }
     }
 }
 
