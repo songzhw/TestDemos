@@ -21,7 +21,9 @@ fun main() {
 
     // 2. 查找文本
         // 2.1 精确匹配文本
-    val appleTitle = driver.findElement(AppiumBy.textMatch("apple"))
+    val tvApple = driver.findElement(textMatch("apple"))
+    println("szww apple = ${tvApple.text}, id = ${tvApple.getAttribute("resource-id")}")
+    //=> szww apple = apple, id = cn.six.appium.and:id/tvInfo
 
         // 2.2 模糊匹配文本
 
