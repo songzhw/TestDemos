@@ -1,5 +1,6 @@
 package cn.appium.t01.adv
 
+import cn.appium.t01.ext.textContains
 import io.appium.java_client.AppiumBy
 import io.appium.java_client.AppiumDriver
 import io.appium.java_client.remote.options.BaseOptions
@@ -26,13 +27,17 @@ fun main() {
     //=> szww apple = apple, id = cn.six.appium.and:id/tvInfo
 
         // 2.2 模糊匹配文本
+    val tvBanana = driver.findElement(textContains("ban"))
+    println("szww banana = ${tvBanana.text}, id = ${tvBanana.getAttribute("resource-id")}")
+    //=> szww banana = banana, id = cn.six.appium.and:id/tvInfo
 
     // 3. 查找图片
 
     // 4. 查找ID
 
-    // 5. 查找RecyclerView不在屏幕上的元素
-
+    // 5. 查找RecyclerView不在屏幕上的元素, 如driver.findElement(textMatch("fig"))
+    // 注意: 当找不在屏幕上的元素时, 会crash, 出错信息是:
+    //     "org.openqa.selenium.NoSuchElementException: An element could not be located on the page using the given search parameters."
 
     driver.quit()
     //el.click();  AppiumBy.xpath("...")

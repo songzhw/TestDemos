@@ -12,6 +12,7 @@
             android:layout_width="100dp" android:layout_height="100dp"
             android:src="@mipmap/ic_launcher" android:scaleType="centerCrop"
             android:layout_centerVertical="true" android:layout_margin="10dp"
+            android:contentDescription="list-product-image"
             />
         <ImageView android:id="@+id/ivAdd"
             android:layout_width="50dp" android:layout_height="50dp"
