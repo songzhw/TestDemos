@@ -2,10 +2,12 @@ package cn.six.appium.and
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.updateLayoutParams
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import cn.six.appium.and.core.BasePage
 import cn.six.appium.and.databinding.AfHomeBinding
+import cn.six.appium.and.ext.dpToPx
 import cn.six.appium.and.views.rv.adapters.RvViewHolder
 import cn.six.appium.and.views.rv.adapters.builder.BuilderAdapterWrapper
 import cn.six.appium.and.views.rv.adapters.builder.BuilderItem
@@ -40,6 +42,7 @@ fun commonAndTitleVerticalLayout(rv: RecyclerView) {
     wrapper.add(TitleBuilderItem(TitleDataForGroup(R.mipmap.ic_launcher, "东瀛")))
     wrapper.add(ShowcaseItem("sweat fig", R.drawable.ic_fig))
     wrapper.add(ShowcaseItem("welcome here", R.drawable.ic_grape))
+    wrapper.add(DividerBuilderItem(100))
     rv.adapter = wrapper.generateAdapter()
 }
 
@@ -58,6 +61,15 @@ data class TitleBuilderItem(val data: TitleDataForGroup) : BuilderItem {
         vh.setText(R.id.tvTitle2, data.title)
         vh.setSrc(R.id.ivTitle2, data.imageResId)
         vh.getView<View>(R.id.llayRoot).setTag(R.layout.item_builder_title, data)
+    }
+}
+
+data class DividerBuilderItem(val heightInDp: Int) : BuilderItem {
+    override fun getViewType() = R.layout.item_builder_divider
+    override fun render(vh: RvViewHolder) {
+        vh.getView<View>(R.id.viewDivider).updateLayoutParams {
+            height = heightInDp.dpToPx()
+        }
     }
 }
 
