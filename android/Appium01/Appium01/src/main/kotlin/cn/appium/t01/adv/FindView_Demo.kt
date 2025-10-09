@@ -4,6 +4,7 @@ import io.appium.java_client.AppiumBy
 import io.appium.java_client.AppiumDriver
 import io.appium.java_client.remote.options.BaseOptions
 import java.net.URI
+import cn.appium.t01.ext.textMatch
 
 fun main() {
     val options = BaseOptions()
@@ -20,6 +21,7 @@ fun main() {
 
     // 2. 查找文本
         // 2.1 精确匹配文本
+    val appleTitle = driver.findElement(AppiumBy.textMatch("apple"))
 
         // 2.2 模糊匹配文本
 
