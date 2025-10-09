@@ -78,7 +78,9 @@ class ShowcaseItem(val title: String, val imageResId: Int) : BuilderItem {
     private fun updateCount(vh: RvViewHolder) {
         val count = Cart.map.getOrDefault(title, 0)
         val visible = if(count <= 0) View.GONE else View.VISIBLE
+        println("szww item = ${title}, count = $count")
         vh.setVisibility(R.id.tvCount, visible)
+        vh.setText(R.id.tvCount, count.toString())
     }
 }
 
