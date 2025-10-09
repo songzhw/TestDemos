@@ -2,10 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/llayRoot"
-    android:orientation="horizontal"
-    android:layout_width="match_parent"
-    android:layout_height="50dp"
-    android:paddingHorizontal="17dp"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="50dp" android:paddingHorizontal="17dp"
+    tools:viewBindingIgnore="true"
     >
 
     <View android:layout_width="0dp" android:layout_height="1dp"

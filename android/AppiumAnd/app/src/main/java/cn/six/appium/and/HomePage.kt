@@ -7,6 +7,7 @@ import androidx.core.os.bundleOf
 import androidx.core.view.updateLayoutParams
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import cn.six.appium.and.biz.Cart
 import cn.six.appium.and.core.BasePage
 import cn.six.appium.and.databinding.AfHomeBinding
 import cn.six.appium.and.ext.dpToPx
@@ -29,7 +30,6 @@ class HomePage : BasePage() {
 }
 
 
-
 fun commonAndTitleVerticalLayout(rv: RecyclerView) {
     val context = rv.context
     rv.layoutManager = LinearLayoutManager(context)
@@ -48,15 +48,37 @@ fun commonAndTitleVerticalLayout(rv: RecyclerView) {
     rv.adapter = wrapper.generateAdapter()
 }
 
-class ShowcaseItem(val title: String, val imageResId: Int): BuilderItem {
+class ShowcaseItem(val title: String, val imageResId: Int) : BuilderItem {
     override fun getViewType(): Int = R.layout.item_builder_showcase
     override fun render(vh: RvViewHolder) {
         vh.setSrc(R.id.ivProduct, imageResId)
         vh.setText(R.id.tvInfo, title)
         vh.rootView<View>().setOnClickListener {
             val actv = it.context as? Activity ?: return@setOnClickListener
-            actv.nav<DetailPage>(bundleOf("title" to title))
+            actv.nav<DetailPage>(bundleOf("title" to title, "img" to imageResId))
         }
+
+        updateCount(vh)
+
+        vh.setClickListener(R.id.ivAdd) {
+            Cart.map.put(title, Cart.map.getOrDefault(title, 0) + 1)
+            updateCount(vh)
+        }
+        vh.setClickListener(R.id.ivRemove) {
+            val count = Cart.map.getOrDefault(title, 0)
+            if (count > 1) {
+                Cart.map.put(title, count - 1)
+            } else if (count == 1) {
+                Cart.map.remove(title)
+            }
+            updateCount(vh)
+        }
+    }
+
+    private fun updateCount(vh: RvViewHolder) {
+        val count = Cart.map.getOrDefault(title, 0)
+        val visible = if(count <= 0) View.GONE else View.VISIBLE
+        vh.setVisibility(R.id.tvCount, visible)
     }
 }
 
