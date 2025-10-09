@@ -21,6 +21,7 @@ build/
 *.class
 
 # generated files
+.kotlin/
 bin/
 gen/
 build/
