@@ -25,6 +25,11 @@ class HomePage : BasePage() {
         super.onCreate(savedInstanceState)
         vb = AfHomeBinding.inflate(layoutInflater)
         setContentView(vb.root)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        // 用DiffUtil当然性能列好, 但这里为了简便就先不用了
         commonAndTitleVerticalLayout(vb.rvHome)
     }
 }

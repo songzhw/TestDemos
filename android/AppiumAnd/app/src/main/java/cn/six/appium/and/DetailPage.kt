@@ -23,6 +23,8 @@ class DetailPage: BasePage() {
             val count = vb.etCount.text.toString().toInt()
             if(count > 0) {
                 Cart.map[title] = count
+            } else {
+                Cart.map.remove(title)
             }
         }
 
