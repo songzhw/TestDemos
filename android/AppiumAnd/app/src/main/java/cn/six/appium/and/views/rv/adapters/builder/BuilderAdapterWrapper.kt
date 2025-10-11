@@ -4,6 +4,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import cn.six.appium.and.views.rv.adapters.RvViewHolder
+import cn.six.appium.and.views.rv.adapters.builder_diff.DiffBuilderAdapter
 
 class BuilderAdapterWrapper {
     val list = arrayListOf<BuilderItem>()
@@ -30,8 +31,8 @@ class BuilderAdapterWrapper {
         return BuilderLoopAdapter(list)
     }
 
-//    fun generateDiffAdapter(myDiff: DiffUtil.ItemCallback<BuilderItem>) : ListAdapter<BuilderItem, RvViewHolder> {
-//        return DiffBuilderAdapter(myDiff)
-//    }
+    fun generateDiffAdapter(myDiff: DiffUtil.ItemCallback<BuilderItem>): ListAdapter<BuilderItem, RvViewHolder> {
+        return DiffBuilderAdapter(myDiff)
+    }
 
 }
