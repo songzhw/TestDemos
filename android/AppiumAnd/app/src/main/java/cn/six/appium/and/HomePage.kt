@@ -29,9 +29,11 @@ class HomePage : BasePage() {
 
     override fun onResume() {
         super.onResume()
+        println("szww refresh HomePage")
         // 用DiffUtil当然性能列好, 但这里为了简便就先不用了
         commonAndTitleVerticalLayout(vb.rvHome)
     }
+
 }
 
 
@@ -66,16 +68,11 @@ class ShowcaseItem(val title: String, val imageResId: Int) : BuilderItem {
         updateCount(vh)
 
         vh.setClickListener(R.id.ivAdd) {
-            Cart.map.put(title, Cart.map.getOrDefault(title, 0) + 1)
+            Cart.increase(title)
             updateCount(vh)
         }
         vh.setClickListener(R.id.ivRemove) {
-            val count = Cart.map.getOrDefault(title, 0)
-            if (count > 1) {
-                Cart.map.put(title, count - 1)
-            } else if (count == 1) {
-                Cart.map.remove(title)
-            }
+            Cart.decrease(title)
             updateCount(vh)
         }
     }
@@ -83,7 +80,6 @@ class ShowcaseItem(val title: String, val imageResId: Int) : BuilderItem {
     private fun updateCount(vh: RvViewHolder) {
         val count = Cart.map.getOrDefault(title, 0)
         val visible = if(count <= 0) View.GONE else View.VISIBLE
-        println("szww item = ${title}, count = $count")
         vh.setVisibility(R.id.tvCount, visible)
         vh.setText(R.id.tvCount, count.toString())
     }
