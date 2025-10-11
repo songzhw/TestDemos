@@ -6,6 +6,7 @@ import android.view.View
 import androidx.core.os.bundleOf
 import androidx.core.view.updateLayoutParams
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import cn.six.appium.and.biz.Cart
 import cn.six.appium.and.core.BasePage
@@ -15,6 +16,8 @@ import cn.six.appium.and.ext.nav
 import cn.six.appium.and.views.rv.adapters.RvViewHolder
 import cn.six.appium.and.views.rv.adapters.builder.BuilderAdapterWrapper
 import cn.six.appium.and.views.rv.adapters.builder.BuilderItem
+import cn.six.appium.and.views.rv.adapters.builder_diff.DiffBuilderCallback
+import cn.six.appium.and.views.rv.adapters.builder_diff.MatchEachDiffResult
 
 // 有多个页, 有img, 有button, 有editText, 有drawer,
 // 有recyclerView (查找某item; 要滑动才能找到某item),
@@ -52,7 +55,12 @@ fun commonAndTitleVerticalLayout(rv: RecyclerView) {
     wrapper.add(ShowcaseItem("fig", R.drawable.ic_fig))
     wrapper.add(ShowcaseItem("grape", R.drawable.ic_grape))
     wrapper.add(DividerBuilderItem(100))
-    rv.adapter = wrapper.generateAdapter()
+    val diff = DiffBuilderCallback(arrayListOf(
+        ShowcaseItem.Companion::isSame, TitleBuilderItem.Companion::isSame, DividerBuilderItem.Companion::isSame
+    ))
+    val adapter = wrapper.generateDiffAdapter(diff)
+    rv.adapter = adapter
+    adapter.submitList(wrapper.list)
 }
 
 class ShowcaseItem(val title: String, val imageResId: Int) : BuilderItem {
@@ -83,6 +91,18 @@ class ShowcaseItem(val title: String, val imageResId: Int) : BuilderItem {
         vh.setVisibility(R.id.tvCount, visible)
         vh.setText(R.id.tvCount, count.toString())
     }
+
+    companion object {
+        fun isSame(old: BuilderItem, now: BuilderItem): MatchEachDiffResult {
+            if (old is ShowcaseItem && now is ShowcaseItem) {
+                val isCountChanged = Cart.isItemChanged(now.title)
+                val isMatch = (old.title == now.title) && (!isCountChanged)
+                if (isMatch) return MatchEachDiffResult.MATCHED_TRUE
+                else return MatchEachDiffResult.MATCHED_FALSE
+            }
+            return MatchEachDiffResult.NOT_MATCHED
+        }
+    }
 }
 
 
@@ -93,6 +113,16 @@ data class TitleBuilderItem(val data: TitleDataForGroup) : BuilderItem {
         vh.setSrc(R.id.ivTitle2, data.imageResId)
         vh.getView<View>(R.id.llayRoot).setTag(R.layout.item_builder_title, data)
     }
+
+    companion object {
+        fun isSame(old: BuilderItem, now: BuilderItem): MatchEachDiffResult {
+            if (old is TitleBuilderItem && now is TitleBuilderItem) {
+                if (old.data.title == now.data.title) return MatchEachDiffResult.MATCHED_TRUE
+                else return MatchEachDiffResult.MATCHED_FALSE
+            }
+            return MatchEachDiffResult.NOT_MATCHED
+        }
+    }
 }
 
 data class DividerBuilderItem(val heightInDp: Int) : BuilderItem {
@@ -100,6 +130,15 @@ data class DividerBuilderItem(val heightInDp: Int) : BuilderItem {
     override fun render(vh: RvViewHolder) {
         vh.getView<View>(R.id.viewDivider).updateLayoutParams {
             height = heightInDp.dpToPx()
+        }
+    }
+    companion object {
+        fun isSame(old: BuilderItem, now: BuilderItem): MatchEachDiffResult {
+            if (old is DividerBuilderItem && now is DividerBuilderItem) {
+                if (old.heightInDp == now.heightInDp) return MatchEachDiffResult.MATCHED_TRUE
+                else return MatchEachDiffResult.MATCHED_FALSE
+            }
+            return MatchEachDiffResult.NOT_MATCHED
         }
     }
 }

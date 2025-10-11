@@ -2,7 +2,7 @@ package cn.six.appium.and.biz
 
 object Cart {
     val map = hashMapOf<String, Int>() // key = productId, value = countInCart
-    private var snapshotStr: String? = null // 用字符串存储快照
+    private var snapshot: Map<String, Int>? = null // 用于存储快照
 
     // 添加或修改商品数量
     fun updateItem(productId: String, count: Int) {
@@ -22,6 +22,19 @@ object Cart {
         val count = map[productId] ?: 0
         this.updateItem(productId, count - 1)
     }
+
+    // 保存当前购物车状态为快照
+    fun saveSnapshot() {
+        // 保存一个深拷贝，避免快照被后续修改影响
+        snapshot = HashMap(map)
+    }
+
+    fun isItemChanged(productId: String) : Boolean {
+        val count = map[productId] ?: 0
+        val snapshotCount = snapshot?.get(productId) ?: 0
+        return count != snapshotCount
+    }
+
 }
 
 /*
